@@ -353,8 +353,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     private void setImageView(Bitmap bm) {
         if (bm != null) {
             previewImage.setImageBitmap(bm);
+            Log.e("LIBRARY~", "setImageView-1()");
         } else if (Duke.uploadingImagesList != null && Duke.uploadingImagesList.size() > 0) {
             previewImage.setImageBitmap(Duke.uploadingImagesList.get(Duke.uploadingImagesList.size() - 1));
+            Log.e("LIBRARY~", "setImageView-2()");
+        } else {
+            Log.e("LIBRARY~", "setImageView-3()");
         }
     }
 
