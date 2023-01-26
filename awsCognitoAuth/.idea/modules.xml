@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AWS Auth.iml" filepath="$PROJECT_DIR$/../AWS Auth.iml" group="AWS Auth" />
+      <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" group="AWS Auth/app" />
+      <module fileurl="file://$PROJECT_DIR$/awsauth.iml" filepath="$PROJECT_DIR$/awsauth.iml" group="AWS Auth/awsauth" />
+    </modules>
+  </component>
+</project>

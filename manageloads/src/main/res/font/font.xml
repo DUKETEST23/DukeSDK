@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <font android:font="@font/lato_black" />
+    <font android:font="@font/lato_bold" />
+    <font android:font="@font/lato_hairline" />
+    <font android:font="@font/lato_heavy" />
+    <font android:font="@font/lato_italic" />
+    <font android:font="@font/lato_light_italic" />
+    <font android:font="@font/lato_medium_italic" />
+    <font android:font="@font/lato_semibold" />
+    <font android:font="@font/lato_thin" />
+    <font android:font="@font/lato_regular" />
+    <font android:font="@font/lato_semibold_italic" />
+    <font android:font="@font/bebas" />
+
+</font-family>

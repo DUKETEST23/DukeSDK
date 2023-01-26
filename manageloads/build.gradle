@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.library'
+//    id 'com.android.application'
+}
+
+apply plugin: 'maven-publish'
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        archivesBaseName = "SDK-ManageLoads-POC-v$versionCode($versionName)"
+        setProperty("archivesBaseName", "SDK-ManageLoads-POC "+"-v$versionCode")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    //    TODO for databinding
+    dataBinding {
+        enabled = true
+    }
+
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                groupId = 'com.github.sankalpduke20'
+//                artifactId = 'my-library'
+//                version = '1.0'
+//
+//                afterEvaluate {
+//                    from components.release
+//                }
+//            }
+//        }
+//    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation project(path: ':awsCognitoAuth')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //OkHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    //aws
+    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.6.3'
+
+    //GIF
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //JWT
+    implementation 'com.auth0.android:jwtdecode:1.2.0'
+
+    //Apache
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.2.1'
+
+    //Recycler Swipe
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.4'
+
+    //Permission Dexter
+    implementation 'com.karumi:dexter:5.0.0'
+
+    // Location
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
+
+    //Object Mapper
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.1'
+
+    implementation 'com.github.MikeOrtiz:TouchImageView:1.4.1'
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.sankalpduke20'
+            artifactId = 'manageLoads'
+            version = '1.1.4'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}

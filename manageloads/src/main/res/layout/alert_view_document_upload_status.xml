@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/upload_status_alert_imageView"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:foregroundGravity="center_horizontal"
+        tools:srcCompat="@drawable/ic_upload_failure" />
+
+    <TextView
+        android:id="@+id/upload_status_alert_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upload_status_alert_imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/upload_status_alert_imageView"
+        tools:text="OH SNAP!" />
+
+    <TextView
+        android:id="@+id/upload_status_alert_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upload_status_alert_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        tools:text="File Already exists in database under different filename(s)!" />
+
+    <Button
+        android:id="@+id/upload_status_alert_button"
+        style="@style/CameraUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_30"
+        android:layout_below="@id/upload_status_alert_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/dimen_20"
+        tools:text="Re-Upload" />
+
+</RelativeLayout>

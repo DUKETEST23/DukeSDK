@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/processed_view"
+    style="@style/ProcessedLayout"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dimen_5"
+    android:paddingEnd="@dimen/dimen_5">
+
+    <TextView
+        android:id="@+id/bill_name"
+        style="@style/BillName"
+        tools:text="Bill Name" />
+
+    <TextView
+        android:id="@+id/bill_type"
+        style="@style/BillType"
+        android:layout_below="@+id/bill_name"
+        tools:text="Type" />
+
+    <LinearLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bill_type">
+
+        <TextView
+            android:id="@+id/processed_date"
+            style="@style/BillType"
+            android:layout_width="0dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            tools:text="12 Aug'19" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/amount_units"
+                style="@style/BillType"
+                android:layout_marginEnd="@dimen/dimen_2"
+                android:text="@string/dollar"
+                android:textColor="@color/colorAmount"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="$" />
+
+            <TextView
+                android:id="@+id/amount"
+                style="@style/Amount"
+                android:textColor="@color/colorAmount"
+                tools:text="479.90" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separator_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_below="@+id/date_layout"
+        android:layout_marginTop="@dimen/dimen_7"
+        android:background="@color/colorProcessedLine" />
+
+</RelativeLayout>

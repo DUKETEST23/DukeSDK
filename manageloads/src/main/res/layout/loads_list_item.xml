@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/load_list_item">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_10"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/load_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Load #213465" />
+
+        <TextView
+            android:id="@+id/upload_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="08/30/21"
+            android:layout_weight="2"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/load_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="1.5"
+            android:textAlignment="center"/>
+
+        <!--    <RadioGroup-->
+        <!--        android:layout_width="0dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_weight="1"-->
+        <!--        android:gravity="center">-->
+        <!--        <RadioButton-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:onClick="onRadioButtonClicked"/>-->
+        <!--    </RadioGroup>-->
+
+        <CheckBox
+            android:id="@+id/is_load_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separator_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_below="@+id/date_layout"
+        android:layout_marginTop="@dimen/dimen_7"
+        android:background="@color/colorProcessedLine" />
+</LinearLayout>

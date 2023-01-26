@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="colorControlNormal">@color/colorIcon</item>
+        <item name="colorControlActivated">@color/colorIcon</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:alertDialogTheme">@style/DukeDialogStyle</item>
+
+        <!--<item name="colorControlHighlight">@color/colorIcon</item>-->
+    </style>
+
+    <style name="NumberPickerText">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="DialogThemeColor" parent="Theme.AppCompat.Light">
+        <item name="android:datePickerDialogTheme">@color/colorBlack</item>
+    </style>
+
+    <style name="dialogAlertTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:buttonBarButtonStyle">@style/customButtonStyle</item>
+    </style>
+
+    <style name="customButtonStyle">
+        <item name="color">@color/colorBlue</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/positive</item>
+    </style>
+
+    <style name="ThemeOverlay.NumberPicker" parent="" >
+        <item name="colorControlNormal">@color/TTTSemiWhite</item>
+    </style>
+
+    <style name="positive">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="FontBebas" parent="WrapWrap">
+        <item name="android:fontFamily">@font/bebas</item>
+    </style>
+
+    <style name="HomeTitles" parent="FontBebas">
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="LatoBold14" parent="WrapWrap">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="HeaderTitle" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorBrightGrey</item>
+    </style>
+
+    <style name="FileText" parent="LatoRegular14">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorBrightGrey</item>
+    </style>
+
+    <style name="MatchMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapMatch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="WrapWrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="BebasRegular12" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="BebasRegular13" parent="BebasRegular12">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="BebasRegular14" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+
+    <style name="BebasRegular17" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_17</item>
+    </style>
+
+    <style name="LatoRegular15" parent="WrapWrap">
+        <item name="android:textSize">@dimen/font_15</item>
+    </style>
+
+    <style name="LatoRegular14" parent="WrapWrap">
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+
+    <style name="BebasRegular15" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_15</item>
+    </style>
+
+    <style name="BebasRegular24" parent="FontBebas">
+        <item name="android:textSize">@dimen/font_24</item>
+    </style>
+
+    <style name="LogoImage">
+        <item name="android:layout_width">@dimen/dimen_156</item>
+        <item name="android:layout_height">@dimen/dimen_59</item>
+        <item name="android:layout_marginTop">@dimen/dimen_30</item>
+    </style>
+
+    <style name="ActiveTabButton" parent="BebasRegular24">
+        <item name="android:minHeight">@dimen/dimen_0</item>
+        <item name="android:minWidth">@dimen/dimen_0</item>
+        <item name="android:textColor">@color/colorBrightGrey</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="HorizontalLine">
+        <item name="android:layout_width">@dimen/dimen_0</item>
+        <item name="android:layout_height">@dimen/dimen_1</item>
+        <item name="android:background">@color/colorBrightGrey</item>
+    </style>
+
+    <style name="InactiveTabButton" parent="BebasRegular15">
+        <item name="android:minWidth">@dimen/dimen_0</item>
+        <item name="android:minHeight">@dimen/dimen_0</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/colorCrete</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="FormBackground" parent="MatchWrap">
+        <item name="android:layout_marginTop">@dimen/dimen_21</item>
+        <item name="android:paddingTop">@dimen/dimen_25</item>
+        <item name="android:paddingBottom">@dimen/dimen_15</item>
+        <item name="android:background">@drawable/login_shadow</item>
+    </style>
+
+    <style name="UploadSuccessText" parent="LatoRegular15">
+        <item name="android:textColor">@color/colorUploadSuccessText</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="UploadSuccessHeader" parent="LatoBold14">
+        <item name="android:textColor">@color/colorUploadSuccessText</item>
+        <item name="android:textSize">@dimen/font_16</item>
+    </style>
+
+    <style name="FormCustomTextInputLayout" parent="LatoRegular15">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/colorIcon</item>
+    </style>
+
+    <style name="FormFieldLayout" parent="FormCustomTextInputLayout">
+        <item name="android:layout_marginStart">@dimen/dimen_25</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_33</item>
+    </style>
+
+    <style name="BottomSheetFormFields" parent="FormFieldLayout">
+        <item name="android:layout_marginTop">@dimen/dimen_35</item>
+        <item name="android:layout_marginStart">@dimen/dimen_0</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_0</item>
+    </style>
+
+    <style name="FormField" parent="FormCustomTextInputLayout">
+        <item name="android:textColor">@color/colorIcon</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:drawablePadding">@dimen/dimen_7</item>
+    </style>
+
+    <style name="FormButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginTop">@dimen/dimen_20</item>
+        <item name="android:paddingRight">@dimen/dimen_75</item>
+        <item name="android:paddingLeft">@dimen/dimen_55</item>
+    </style>
+
+    <style name="FormButton12" parent="FormButton">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:paddingRight">@dimen/dimen_0</item>
+        <item name="android:paddingLeft">@dimen/dimen_0</item>
+    </style>
+
+    <style name="CameraUploadButton" parent="FormButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingRight">@dimen/dimen_25</item>
+        <item name="android:paddingLeft">@dimen/dimen_35</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+    </style>
+
+    <style name="AddRecipientButton" parent="FormButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingRight">@dimen/dimen_15</item>
+        <item name="android:paddingLeft">@dimen/dimen_25</item>
+        <item name="android:background">@drawable/button_background_alternate</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_0</item>
+    </style>
+
+    <style name="SuccessButton" parent="FormButton">
+        <item name="android:paddingRight">@dimen/dimen_25</item>
+        <item name="android:paddingLeft">@dimen/dimen_25</item>
+    </style>
+
+    <style name="BottomLinkText" parent="LatoRegular15">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_25</item>
+    </style>
+
+    <style name="BottomIconNames" parent="BottomLinkText">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_25</item>
+    </style>
+
+    <style name="SelectImageCount" parent="LatoRegular15">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="BottomIconNamesUploadSelection" parent="BottomIconNames">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="VerificationCodeText" parent="WrapWrap">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorIcon</item>
+    </style>
+
+    <style name="resendButton" parent="BottomLinkText">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_30</item>
+    </style>
+
+    <style name="DocumentsGridView" parent="MatchWrap">
+        <!--        <item name="android:background">@color/colorDocumentBackground</item>-->
+        <item name="android:background">@color/colorTransparentWhite</item>
+        <item name="android:paddingStart">@dimen/dimen_25</item>
+        <item name="android:paddingEnd">@dimen/dimen_10</item>
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_10</item>
+    </style>
+
+    <style name="processedDocumentsGridView" parent="MatchWrap">
+        <item name="android:background">@color/colorDocumentBackground</item>
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_10</item>
+    </style>
+
+    <style name="DocumentImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_115</item>
+    </style>
+
+    <style name="DocumentDateLayout">
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+        <item name="android:paddingLeft">@dimen/dimen_8</item>
+        <item name="android:paddingRight">@dimen/dimen_10</item>
+        <item name="android:paddingBottom">@dimen/dimen_4</item>
+    </style>
+
+    <style name="DocumentDate" parent="DocumentDateLayout">
+        <item name="android:textSize">@dimen/font_13</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="ProcessedLayout" parent="MatchWrap">
+        <item name="android:paddingTop">@dimen/dimen_10</item>
+        <item name="android:paddingStart">@dimen/dimen_10</item>
+        <item name="android:paddingEnd">@dimen/dimen_10</item>
+    </style>
+
+    <style name="BillName" parent="LatoBold14">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="BillType" parent="WrapWrap">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="DateLayout" parent="MatchWrap">
+        <item name="android:layout_marginTop">@dimen/dimen_9</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Amount" parent="BebasRegular17">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TabText" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/bebas</item>
+    </style>
+
+    <style name="DashboardRejectCount" parent="WrapWrap">
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+        <item name="android:paddingBottom">@dimen/dimen_5</item>
+        <item name="android:paddingLeft">@dimen/dimen_8</item>
+        <item name="android:paddingRight">@dimen/dimen_8</item>
+        <item name="android:layout_marginStart">@dimen/dimen_5</item>
+    </style>
+
+    <style name="UploadCount" parent="WrapWrap">
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+        <item name="android:paddingBottom">@dimen/dimen_5</item>
+        <item name="android:paddingLeft">@dimen/dimen_8</item>
+        <item name="android:paddingRight">@dimen/dimen_8</item>
+    </style>
+
+    <style name="FloatingButtonStyles" parent="WrapWrap">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_gravity">center|bottom</item>
+        <item name="android:layout_margin">@dimen/dimen_16</item>
+        <item name="android:tint">@color/colorWhite</item>
+    </style>
+
+    <style name="DocumentDetailsFloatingButton">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:tint">@color/colorWhite</item>
+        <item name="android:layout_gravity">center|bottom</item>
+        <item name="android:layout_margin">@dimen/dimen_16</item>
+        <item name="android:layout_marginTop">@dimen/dimen_0</item>
+    </style>
+
+    <style name="InProcessDocumentImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="InProcessImage" parent="InProcessDocumentImageView">
+        <item name="android:layout_marginLeft">@dimen/dimen_30</item>
+        <item name="android:layout_marginRight">@dimen/dimen_30</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_25</item>
+    </style>
+
+    <style name="ProcessedImageLayout" parent="MatchMatch">
+        <item name="android:layout_marginStart">@dimen/dimen_25</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_25</item>
+    </style>
+
+    <style name="ProcessDocumentImageView" parent="InProcessDocumentImageView">
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+    </style>
+
+    <style name="ProcessedDocumentViewLayout" parent="ProcessedLayout">
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+        <item name="android:paddingBottom">@dimen/dimen_10</item>
+        <item name="android:background">@color/colorDocumentBackground</item>
+    </style>
+
+    <style name="PreviousNextButton" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">@dimen/dimen_45</item>
+        <item name="android:layout_height">@dimen/dimen_35</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="FormButton">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingRight">@dimen/dimen_15</item>
+        <item name="android:paddingLeft">@dimen/dimen_30</item>
+        <item name="android:paddingBottom">@dimen/dimen_5</item>
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+    </style>
+
+    <style name="NegativeButtonStyle">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:paddingBottom">@dimen/dimen_3</item>
+        <item name="android:layout_marginTop">@dimen/dimen_15</item>
+        <item name="android:paddingTop">@dimen/dimen_20</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="VerticalButtonStyle">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:padding">@dimen/dimen_10</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="NeutralButtonStyle" parent="PositiveButtonStyle">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingBottom">@dimen/dimen_10</item>
+        <item name="android:paddingTop">@dimen/dimen_10</item>
+        <item name="android:paddingRight">@dimen/dimen_25</item>
+        <item name="android:paddingLeft">@dimen/dimen_25</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_5</item>
+    </style>
+
+    <style name="AlertWindowTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+        <item name="android:paddingLeft">@dimen/dimen_5</item>
+        <item name="android:paddingRight">@dimen/dimen_10</item>
+    </style>
+
+    <style name="OverlayStyles" parent="Base.Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="windowMinWidthMajor">0dp</item>-->
+        <!--<item name="windowMinWidthMinor">0dp</item>-->
+        <!--<item name="android:minHeight">0dp</item>-->
+        <item name="android:background">@drawable/rounded_white_background</item>
+        <item name="android:windowTitleStyle">@style/AlertWindowTitle</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:colorAccent">@color/colorBlue</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/NeutralButtonStyle</item>
+        <item name="titleMarginBottom">0dp</item>
+        <item name="android:paddingTop">@dimen/dimen_5</item>
+        <item name="android:paddingBottom">@dimen/dimen_5</item>
+        <item name="android:paddingLeft">@dimen/dimen_10</item>
+        <item name="android:paddingRight">@dimen/dimen_10</item>
+    </style>
+
+    <style name="ConfirmationTitle">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_16</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="ConfirmationMessage">
+        <item name="android:layout_marginTop">@dimen/dimen_2</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="ReasonTextView" parent="BillType">
+        <item name="android:background">@color/colorDocumentBackground</item>
+        <item name="android:padding">@dimen/dimen_15</item>
+        <item name="android:paddingStart">@dimen/dimen_20</item>
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+        <item name="android:layout_marginTop">@dimen/dimen_15</item>
+    </style>
+
+    <style name="ReuploadButton" parent="FormButton">
+        <item name="android:paddingRight">@dimen/dimen_35</item>
+        <item name="android:paddingLeft">@dimen/dimen_45</item>
+    </style>
+
+    <style name="ReportRecyclerView">
+        <item name="android:layout_marginStart">@dimen/dimen_15</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_15</item>
+        <item name="android:layout_marginTop">@dimen/dimen_30</item>
+    </style>
+
+    <style name="ReportItemCardLayout" parent="MatchWrap">
+        <item name="android:paddingLeft">@dimen/dimen_10</item>
+        <item name="android:paddingTop">@dimen/dimen_14</item>
+        <item name="android:paddingBottom">@dimen/dimen_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_20</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_30</item>
+        <item name="android:background">@drawable/report_item_backgroud</item>
+    </style>
+
+    <style name="CustomRecipientListCardLayout" parent="MatchWrap">
+        <item name="android:padding">@dimen/dimen_10</item>
+        <item name="android:background">@drawable/report_item_backgroud</item>
+    </style>
+
+
+    <style name="ReportItemDisabled" parent="ReportItemCardLayout">
+        <item name="android:paddingLeft">@dimen/dimen_10</item>
+        <item name="android:paddingTop">@dimen/dimen_14</item>
+        <item name="android:paddingBottom">@dimen/dimen_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_20</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_30</item>
+        <item name="android:background">#88000000</item>
+    </style>
+
+    <style name="ReportIcon">
+        <item name="android:layout_width">@dimen/dimen_30</item>
+        <item name="android:layout_height">@dimen/dimen_30</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_20</item>
+    </style>
+
+    <style name="SpinnerHeading" parent="LatoRegular15">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/colorDropdownHeading</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_marginStart">@dimen/dimen_25</item>
+    </style>
+
+    <style name="ReportSpinner">
+        <item name="android:layout_width">@dimen/dimen_160</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dimen_25</item>
+        <item name="android:layout_marginTop">@dimen/dimen_5</item>
+    </style>
+
+    <style name="AddRecipientSpinner">
+        <item name="android:layout_width">@dimen/dimen_160</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dimen_5</item>
+    </style>
+
+    <style name="ReportSpinnerItem" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:padding">@dimen/dimen_10</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="ReportsEmptyCard" parent="DocumentsGridView">
+        <item name="android:layout_marginStart">@dimen/dimen_10</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_10</item>
+        <item name="android:layout_marginTop">@dimen/dimen_15</item>
+        <item name="android:background">@color/colorRed</item>
+    </style>
+
+    <style name="ProfileCardsLayout" parent="MatchWrap">
+        <item name="android:background">@drawable/white_background_with_black_border</item>
+        //Should change this to drawable used in reports
+        <item name="android:paddingTop">@dimen/dimen_12</item>
+        <item name="android:paddingBottom">@dimen/dimen_12</item>
+        <item name="android:paddingStart">@dimen/dimen_15</item>
+        <item name="android:layout_marginStart">@dimen/dimen_32</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_32</item>
+        <item name="android:layout_marginTop">@dimen/dimen_20</item>
+    </style>
+
+    <style name="ProfileCardText" parent="LatoRegular15">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="ProfileUserImage">
+        <item name="android:layout_marginStart">@dimen/dimen_30</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_30</item>
+    </style>
+
+    <style name="ProfileUserDetailsLayout">
+        <item name="android:paddingBottom">@dimen/dimen_20</item>
+        <item name="android:paddingStart">@dimen/dimen_45</item>
+        <!--<item name="android:paddingTop">@dimen/dimen_50</item>-->
+        <item name="android:paddingEnd">@dimen/dimen_45</item>
+    </style>
+
+    <style name="ProfileHelloText" parent="WrapWrap">
+        <item name="android:textSize">@dimen/dimen_17</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/bebas</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#25a464</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#f1f1f1
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#848484
+        </item>
+    </style>
+
+    <style name="darkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomSwitch">
+        <!-- NOTE this way the switch will be as width as required minimally -->
+        <item name="android:switchMinWidth">0dp</item>
+        <item name="android:track">@drawable/switch_track</item>
+        <!-- NOTE if set to 0dp, the thumb was not visible even with padding
+                  of the thumb drawable set to -->
+        <item name="android:thumbTextPadding">@dimen/switch_thumb_radius</item>-->
+        <!--<item name="android:thumbTextPadding">0dp</item>-->
+    </style>
+
+    <style name="HomeMenuSection">
+        <item name="android:paddingBottom">@dimen/dimen_15</item>
+    </style>
+
+    <style name="HomeMenuSection1440dp">
+        <item name="android:paddingBottom">@dimen/dimen_25</item>
+    </style>
+
+    <style name="DukeDialogStyle" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/blue_212537</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="DukeTheme">
+        <item name="android:background">@drawable/background</item>
+    </style>
+
+    <style name="TruckTheme">
+        <item name="android:background">@color/colorGreen</item>
+    </style>
+
+    <style name="socialLoginIcon">
+        <item name="android:layout_width">@dimen/dimen_20</item>
+        <item name="android:layout_height">@dimen/dimen_20</item>
+        <item name="android:layout_marginRight">@dimen/dimen_5</item>
+    </style>
+
+    <style name="Theme.App.Dialog.FullScreen"
+        parent="Theme.MaterialComponents.Dialog">
+        <!-- (1)-->
+        <item name="android:windowIsFloating">false</item>
+        <!-- (2) -->
+        <item name="android:windowBackground">@color/colorBlack</item>
+        <item name="android:statusBarColor">@color/colorBlack</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+</resources>

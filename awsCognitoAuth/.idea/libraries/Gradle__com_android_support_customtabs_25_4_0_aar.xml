@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.support:customtabs:25.4.0@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/401fb9ce9c6631d5c3db57e19f58f291/customtabs-25.4.0/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/401fb9ce9c6631d5c3db57e19f58f291/customtabs-25.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/401fb9ce9c6631d5c3db57e19f58f291/customtabs-25.4.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/customtabs/25.4.0/cc285ab8d4443530e68b52dbf98069ed50e81b61/customtabs-25.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

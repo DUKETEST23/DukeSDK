@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/report_item_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/dimen_10">
+
+        <View
+            android:id="@+id/border_top"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorBlack"
+            android:layout_alignTop="@id/recipient"/>
+
+        <TextView
+            android:id="@+id/recipient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_alignParentStart="true"
+            android:paddingVertical="@dimen/dimen_10"/>
+
+
+        <ImageView
+            android:id="@+id/edit_icon"
+            android:layout_width="@dimen/dimen_18"
+            android:layout_height="@dimen/dimen_18"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_2"
+            android:alpha="0"
+            android:src="@drawable/ic_pencil_edit_button"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/border_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorBlack"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_alignBottom="@id/recipient"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

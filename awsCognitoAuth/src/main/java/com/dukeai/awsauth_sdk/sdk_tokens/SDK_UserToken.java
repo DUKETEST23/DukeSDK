@@ -1,0 +1,37 @@
+package com.dukeai.awsauth_sdk.sdk_tokens;
+
+/*
+ * Copyright 2013-2017 Amazon.com, Inc. or its affiliates.
+ * All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Base class for Cognito tokens.
+ */
+public class SDK_UserToken {
+    // A Cognito Token - can be an Access, Id or Refresh token.
+    private String token;
+
+    // Construct a new Cognito token.
+    public SDK_UserToken(String token) {
+        this.token = token;
+    }
+
+    // Returns the stored token.
+    protected String getToken() {
+        return token;
+    }
+}
+

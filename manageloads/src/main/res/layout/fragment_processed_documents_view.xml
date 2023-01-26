@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    tools:context=".ui.fragments.ProcessedDocumentsDetailsFragment">
+
+
+    <include
+        layout="@layout/custom_header"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/bill_details_layout"-->
+<!--        style="@style/ProcessedDocumentViewLayout"-->
+<!--        android:layout_below="@id/header">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/bill_name"-->
+<!--            style="@style/BillName" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/bill_type"-->
+<!--            style="@style/BillType"-->
+<!--            android:layout_below="@+id/bill_name" />-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/date_layout"-->
+<!--            style="@style/DateLayout"-->
+<!--            android:layout_below="@id/bill_type">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/processed_date"-->
+<!--                style="@style/BillType"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/amount_units"-->
+<!--                    style="@style/BillType"-->
+<!--                    android:layout_marginEnd="@dimen/dimen_3"-->
+<!--                    android:text="@string/dollar"-->
+<!--                    android:textColor="@color/colorAmount" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/amount"-->
+<!--                    style="@style/Amount"-->
+<!--                    android:textColor="@color/colorAmount" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </RelativeLayout>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bill_details_layout"
+        style="@style/ProcessedDocumentViewLayout"
+        android:layout_below="@id/header">
+
+        <TextView
+            android:id="@+id/bill_name"
+            style="@style/BillName"
+            android:layout_width="@dimen/dimen_160"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bill_type"
+            style="@style/BillType"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bill_name" />
+
+        <TextView
+            android:id="@+id/main_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bill_name" />
+
+        <TextView
+            android:id="@+id/sub_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_category_name"
+            app:layout_constraintTop_toTopOf="@id/bill_type" />
+
+        <LinearLayout
+            android:id="@+id/date_layout"
+            style="@style/DateLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bill_type">
+
+            <TextView
+                android:id="@+id/processed_date"
+                style="@style/BillType"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/amount_units"
+                    style="@style/BillType"
+                    android:layout_marginEnd="@dimen/dimen_3"
+                    android:text="@string/dollar"
+                    android:textColor="@color/colorAmount" />
+
+                <TextView
+                    android:id="@+id/amount"
+                    style="@style/Amount"
+                    android:textColor="@color/colorAmount" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/document_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/close_fab_icon"
+        android:layout_below="@id/bill_details_layout"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_20">
+
+        <AdapterViewFlipper
+            android:id="@+id/image_flipper"
+            style="@style/ProcessedImageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </AdapterViewFlipper>
+
+        <ImageButton
+            android:id="@+id/previous_button"
+            style="@style/PreviousNextButton"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/previous_button_bg"
+            android:src="@drawable/ic_previous"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/next_button"
+            style="@style/PreviousNextButton"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/previous_button_bg"
+            android:scaleX="-1"
+            android:src="@drawable/ic_previous"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/signature_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="@dimen/dimen_40"
+        android:paddingRight="@dimen/dimen_40"
+        android:layout_marginBottom="@dimen/dimen_180"
+        android:visibility="gone"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 "
+        android:inputType="textFilter"
+        android:hint="Enter signature"/>
+
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/close_fab_icon"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginLeft="@dimen/dimen_20"-->
+    <!--        android:layout_marginBottom="@dimen/dimen_16"-->
+    <!--        android:background="@drawable/icon_background"-->
+    <!--        android:padding="@dimen/dimen_15">-->
+
+    <!--        <ImageView-->
+    <!--            android:layout_width="@dimen/dimen_15"-->
+    <!--            android:layout_height="@dimen/dimen_15"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            android:contentDescription="@string/close_icon"-->
+    <!--            android:src="@drawable/ic_close"-->
+    <!--            android:tint="@color/colorWhite" />-->
+
+    <!--    </RelativeLayout>-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/close_fab_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_16"
+        android:padding="@dimen/dimen_15"
+        android:src="@drawable/ic_delete_icon_white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/signature"
+        style="@style/DocumentDetailsFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_16"
+        android:src="@drawable/signature_bold_white"
+        app:borderWidth="@dimen/dimen_0" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/submit"
+        style="@style/DocumentDetailsFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/dimen_16"
+        app:borderWidth="@dimen/dimen_0"
+        android:visibility="gone"/>
+
+    <TextView android:layout_height="wrap_content"
+        android:id="@+id/submit_text"
+        android:layout_width="wrap_content"
+        android:text="OK"
+        android:elevation="6dp"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        android:layout_margin="@dimen/dimen_32"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/upload_button"
+        style="@style/FloatingButtonStyles"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_take_picture"
+        app:borderWidth="@dimen/dimen_0" />
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.UploadFailureFragment">
+
+    <include
+        layout="@layout/custom_header"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </include>
+
+    <ImageView
+        android:id="@+id/failure_image"
+        android:layout_width="@dimen/dimen_160"
+        android:layout_height="@dimen/dimen_132"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_80"
+        android:contentDescription="@string/upload_failure"
+        android:src="@drawable/ic_upload_failure" />
+
+    <TextView
+        android:id="@+id/snap"
+        style="@style/UploadSuccessHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/failure_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:text="@string/oh_snap" />
+
+    <TextView
+        android:id="@+id/something_wrong"
+        style="@style/UploadSuccessText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/snap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_7"
+        android:text="@string/hello_looks_like_something_went_wrong" />
+
+    <TextView
+        style="@style/UploadSuccessText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/something_wrong"
+        android:layout_centerHorizontal="true"
+        android:text="@string/please_try_again_later" />
+
+
+</RelativeLayout>

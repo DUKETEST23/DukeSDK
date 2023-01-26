@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.fragments.AddRecipientFragment"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/custom_header"
+        android:id="@+id/add_recipient_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:elevation="@dimen/dimen_20" />
+
+    <ScrollView
+        android:id="@+id/scroll_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_patch">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_20"
+            android:background="@drawable/white_fg_shadow_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_20">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name*"></TextView>
+
+             <!--   <com.dukeai.manageloads.views.CustomTextInputLayout
+                    android:id="@+id/company_name_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false"
+                    app:passwordToggleEnabled="true">
+
+                    <com.dukeai.manageloads.views.CustomEditInputField
+                        android:id="@+id/company_name_value"
+                        style="@style/FormField"
+                        android:hint="Company Name"
+                        android:inputType="text"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="companyname"
+                        android:textColorHint="#ECECED"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/company_name_wrapper" />
+                </com.dukeai.manageloads.views.CustomTextInputLayout>-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/company_name_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/company_name_value"
+                        style="@style/FormField"
+                        android:hint="Company Name"
+                        android:inputType="text"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="companyname"
+                        android:textColorHint="#ECECED"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/company_name_wrapper" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email ID*"></TextView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="true"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_id"
+                        style="@style/FormField"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="email"
+                        android:includeFontPadding="true"
+                        android:textColorHint="#ECECED"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/email_wrapper" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_15">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="false"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_value"
+                        style="@style/FormField"
+                        android:hint="Address"
+                        android:textColorHint="#ECECED"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="recipient_phone"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/address_wrapper" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_15">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phone_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="false"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone_value"
+                        style="@style/FormField"
+                        android:hint="Phone"
+                        android:textColorHint="#ECECED"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="recipient_phone"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/phone_wrapper" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_15">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Name/Contact"></TextView>
+
+                <com.dukeai.manageloads.views.CustomTextInputLayout
+                    android:id="@+id/contact_wrapper"
+                    style="@style/BottomSheetFormFields"
+                    android:layout_marginTop="20dp"
+                    app:errorEnabled="false"
+                    app:hintEnabled="false">
+
+                    <com.dukeai.manageloads.views.CustomEditInputField
+                        android:id="@+id/contact_value"
+                        style="@style/FormField"
+                        android:hint="Contact Name/Contact"
+                        android:textColorHint="#ECECED"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:tag="recipient_phone"
+                        app:hintTextAppearance="@color/colorIcon"
+                        app:parent_wrapper_id="@id/address_wrapper" />
+                </com.dukeai.manageloads.views.CustomTextInputLayout>
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_20">
+
+                <Button
+                    android:id="@+id/submit"
+                    style="@style/CameraUploadButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/submit" />
+
+                <TextView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete"
+                    android:textAllCaps="true"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="@id/submit"
+                    app:layout_constraintBottom_toBottomOf="@id/submit"
+                    app:layout_constraintStart_toEndOf="@id/submit"
+                    android:textColor="#FF4949"
+                    android:layout_marginStart="@dimen/dimen_20"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

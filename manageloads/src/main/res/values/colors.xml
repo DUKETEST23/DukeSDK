@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorBrightGrey">#3c3f4e</color>
+    <color name="colorCrete">#6e6328</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#2c3247</color>
+    <color name="colorTTT">#325135</color>
+    <color name="colorTTT2">#779B2D</color>
+    <color name="colorIcon">#404866</color>
+    <color name="colorDocumentBackground">#BFFFFFFF</color>
+    <color name="colorDateBackground">#4b4c5f</color>
+    <color name="colorProcessedLine">#B32D3248</color>
+    <color name="colorIconBackground">#2C3147</color>
+    <color name="colorBlue">#5189C7</color>
+    <color name="colorUserImage">#d2c1a9</color>
+    <color name="colorAmount">#4155a5</color>
+    <color name="colorDropdownHeading">#433d18</color>
+    <color name="colorRed">#c32126</color>
+    <color name="colorUploadSuccessText">#3b3e4b</color>
+    <color name="colorTransparentWhite">#DDFFFFFF</color>
+    <color name="TTTSemiWhite">#D8EAE0</color>
+    <color name="dukeSemiWhite">#FBF8DF</color>
+    <color name="colorGradientEndColor">#333333</color>
+    <color name="blue_212537">#212537</color>
+    <color name="yellow_FFF2DA3C">#FFE54C</color>
+    <color name="yellow_BBAE27">#BBAE27</color>
+    <color name="red_FFFF2600">#FFFF2600</color>
+    <color name="black">#000000</color>
+    <color name="colorGreen">#108140</color>
+    <color name="colorGray">#A3A2A2</color>
+</resources>

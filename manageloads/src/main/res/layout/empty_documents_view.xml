@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_documents_card"
+    style="@style/DocumentsGridView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dimen_30"
+        android:layout_marginRight="@dimen/dimen_30">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/dimen_105"
+            android:layout_height="@dimen/dimen_129"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/upload_success"
+            android:src="@drawable/ic_view_document" />
+
+        <TextView
+            android:id="@+id/error_message"
+            style="@style/UploadSuccessText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

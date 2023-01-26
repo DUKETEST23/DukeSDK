@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dimen_20">
+
+    <TextView
+        android:id="@+id/select_recipient_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/font_16"
+        android:text="Select Recipient"/>
+
+    <RelativeLayout
+        android:id="@+id/available_to_all_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:layout_constraintTop_toBottomOf="@id/select_recipient_title">
+
+        <TextView
+            android:id="@+id/first_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="READ ONLY" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/first_category_text"
+            android:background="@color/colorBlack"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/first_category_text"
+            android:background="@color/colorBlack"
+            />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/available_to_all_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_160"
+        app:layout_constraintTop_toBottomOf="@id/available_to_all_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/no_global_recipients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="@id/available_to_all_recyclerView"
+        app:layout_constraintStart_toStartOf="@id/available_to_all_recyclerView"
+        app:layout_constraintEnd_toEndOf="@id/available_to_all_recyclerView"
+        app:layout_constraintBottom_toBottomOf="@id/available_to_all_recyclerView"
+        android:text="@string/no_global_recipients"/>
+
+    <RelativeLayout
+        android:id="@+id/added_by_you_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/dimen_20"
+        app:layout_constraintTop_toBottomOf="@id/available_to_all_recyclerView">
+
+        <TextView
+            android:id="@+id/second_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="CREATED BY YOU" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@id/second_category_text"
+            android:background="@color/colorBlack"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_toRightOf="@id/second_category_text"
+            android:background="@color/colorBlack"
+            />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/added_by_you_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_160"
+        app:layout_constraintTop_toBottomOf="@id/added_by_you_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/no_custom_recipients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="@id/added_by_you_recyclerView"
+        app:layout_constraintStart_toStartOf="@id/added_by_you_recyclerView"
+        app:layout_constraintEnd_toEndOf="@id/added_by_you_recyclerView"
+        app:layout_constraintBottom_toBottomOf="@id/added_by_you_recyclerView"
+        android:text="@string/no_custom_recipients"/>
+
+    <TextView
+        android:id="@+id/clear_all_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear All"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/added_by_you_recyclerView"
+        app:layout_constraintTop_toTopOf="@id/ok_btn"
+        app:layout_constraintBottom_toBottomOf="@id/ok_btn"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/added_by_you_recyclerView"
+        app:layout_constraintEnd_toStartOf="@id/ok_btn"
+        app:layout_constraintTop_toTopOf="@id/ok_btn"
+        app:layout_constraintBottom_toBottomOf="@id/ok_btn"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:textStyle="bold"
+        android:text="@string/cancel"/>
+
+    <Button
+        android:id="@+id/ok_btn"
+        style="@style/NeutralButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:textColor="@color/TTTSemiWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/added_by_you_recyclerView"
+        android:text="@string/OK"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

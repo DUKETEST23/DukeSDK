@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_background"
+    android:padding="@dimen/dimen_20">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/HeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_a_document" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="@dimen/dimen_20"
+        android:layout_height="@dimen/dimen_20"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/close_icon"
+        android:src="@drawable/ic_close" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/close"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <RelativeLayout
+            android:id="@+id/camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/camera_image"
+                android:layout_width="@dimen/dimen_30"
+                android:layout_height="@dimen/dimen_30"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_camera"
+                android:backgroundTint="@color/colorBlack" />
+
+            <TextView
+                style="@style/BottomIconNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/camera_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dimen_20"
+                android:text="@string/camera" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/gallery_image"
+                android:layout_width="@dimen/dimen_30"
+                android:layout_height="@dimen/dimen_30"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_gallery"
+                android:backgroundTint="@color/colorBlack" />
+
+            <TextView
+                style="@style/BottomIconNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gallery_image"
+                android:layout_centerHorizontal="true"
+                android:text="@string/gallery" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+

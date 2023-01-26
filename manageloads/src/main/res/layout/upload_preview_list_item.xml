@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dimen_50"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/dimen_5">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_2"
+        android:contentDescription="@string/recycler_item" />
+
+</RelativeLayout>

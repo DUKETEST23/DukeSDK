@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.Documents">
+
+    <include
+        layout="@layout/custom_header"
+        android:id="@+id/documents_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_documents"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_25"
+        android:layout_below="@id/documents_header"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_25"
+        android:layout_marginRight="@dimen/dimen_10"
+        app:elevation="@dimen/dimen_0"
+        app:tabGravity="fill"
+        app:tabIndicatorHeight="@dimen/dimen_0"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/colorBlack"
+        app:tabTextAppearance="@style/TabText"
+        app:tabTextColor="@color/colorBlack" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager_documents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_layout_documents"
+        android:layout_marginTop="-3dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/upload_button"
+        style="@style/FloatingButtonStyles"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_take_picture"
+        app:borderWidth="@dimen/dimen_0" />
+
+</RelativeLayout>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_loads"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:fillViewport="true"
+    tools:context=".ui.fragments.LoadsFragment">
+
+    <ScrollView
+        android:id="@+id/scroll_view_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.fragments.LoadsFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                layout="@layout/custom_header"
+                android:id="@+id/loads_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/create_load_btn"
+                android:layout_width="141dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:background="@color/colorBlack"
+                android:padding="@dimen/dimen_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/plus_icon"
+                    android:layout_width="@dimen/dimen_12"
+                    android:layout_height="@dimen/dimen_12"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/plus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/create_load_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dimen_8"
+                    android:paddingRight="@dimen/dimen_8"
+                    android:text="@string/create_load"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/font_14"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/plus_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.dukeai.manageloads.utils.DasSpinner
+                android:id="@+id/loads_filter_spinner"
+                style="@style/AddRecipientSpinner"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:background="@color/colorTransparent"
+                android:overlapAnchor="false"
+                android:spinnerMode="dropdown"
+                app:layout_constraintStart_toStartOf="@+id/loads_list_container"
+                app:layout_constraintTop_toBottomOf="@id/create_load_btn"
+                tools:listitem="Year To Date" />
+            <TextView
+                android:id="@+id/datesSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTransparent"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_12"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/loads_list_container"
+                app:layout_constraintTop_toBottomOf="@id/loads_filter_spinner" />
+
+
+            <!--
+            <Spinner
+                android:id="@+id/loads_filter_spinner"
+                style="@style/AddRecipientSpinner"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:background="@color/colorTransparent"
+                android:overlapAnchor="false"
+                android:spinnerMode="dropdown"
+                app:layout_constraintStart_toStartOf="@+id/loads_list_container"
+                app:layout_constraintTop_toBottomOf="@id/create_load_btn" />
+-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/loads_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_360"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/colorDocumentBackground"
+                android:padding="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/datesSelected">
+
+                <LinearLayout
+                    android:id="@+id/loads_recycler_view_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/dimen_10"
+                        android:paddingTop="@dimen/dimen_5"
+                        android:paddingEnd="@dimen/dimen_10"
+                        android:paddingBottom="@dimen/dimen_5">
+
+                        <TextView
+                            android:id="@+id/load_id"
+                            style="@style/BillName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text="Load ID" />
+
+                        <TextView
+                            android:id="@+id/upload_date"
+                            style="@style/BillName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="Upload Date"
+                            android:textAlignment="center" />
+
+                        <!--                <LinearLayout-->
+                        <!--                    android:layout_width="0dp"-->
+                        <!--                    android:layout_height="wrap_content"-->
+                        <!--                    android:layout_weight="1"-->
+                        <!--                    android:orientation="vertical">-->
+
+                        <!--                    <TextView-->
+                        <!--                        android:id="@+id/load_amount"-->
+                        <!--                        style="@style/BillName"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:text="Amount"-->
+                        <!--                        android:layout_weight="1" />-->
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:textSize="@dimen/font_12"-->
+                        <!--                        android:text="(Coming Soon)"/>-->
+
+                        <!--                </LinearLayout>-->
+
+                        <TextView
+                            android:id="@+id/load_amount"
+                            style="@style/BillName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text="Amount"
+                            android:textAlignment="center" />
+
+                        <CheckBox
+                            android:id="@+id/is_load_selected"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/separator_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_1"
+                        android:layout_below="@+id/date_layout"
+                        android:layout_marginTop="@dimen/dimen_7"
+                        android:background="@color/colorProcessedLine" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/loads_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/loads_recycler_view_labels">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/no_loads_for_selected_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No loads found for the selected period!"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/no_loads_present"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You don't have any load. Please create a new load."
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/select_or_add_recipient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loads_list_container">
+
+                <TextView
+                    android:id="@+id/select_recipient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:drawableEnd="@drawable/dropdown"
+                    android:gravity="center_vertical"
+                    android:hint="Select Recipient"
+                    android:padding="@dimen/dimen_14" />
+
+                <!--        <TextView-->
+                <!--            android:id="@+id/add_recipient_text"-->
+                <!--            android:textAppearance="@style/LatoBold14"-->
+                <!--            app:layout_constraintTop_toTopOf="parent"-->
+                <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--            app:layout_constraintStart_toEndOf="@id/add_recipient"-->
+                <!--            android:layout_width="wrap_content"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:text="Add new recipient"/>-->
+
+                <Button
+                    android:id="@+id/add_recipient_text"
+                    style="@style/AddRecipientButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/dimen_5"
+                    android:text="Add recipient" />
+
+            </LinearLayout>
+
+            <!--    <View-->
+            <!--        app:layout_constraintStart_toStartOf="@id/add_recipient_text"-->
+            <!--        app:layout_constraintEnd_toEndOf="@id/add_recipient_text"-->
+            <!--        app:layout_constraintTop_toBottomOf="@id/add_recipient_text"-->
+            <!--        android:id="@+id/register_underline"-->
+            <!--        style="@style/HorizontalLine" />-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/custom_recipients_recycler_view_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/colorDocumentBackground"
+                android:padding="@dimen/dimen_5"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_or_add_recipient">
+
+                <TextView
+                    android:id="@+id/edit_recipient_panel_title"
+                    style="@style/BillName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_10"
+                    android:text="Edit Recipient Detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/custom_recipients_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_100"
+                    android:fadingEdge="horizontal"
+                    android:fadingEdgeLength="@dimen/dimen_30"
+                    android:fillViewport="false"
+                    android:requiresFadingEdge="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edit_recipient_panel_title">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ImageView
+                    android:id="@+id/edit_icon"
+                    android:layout_width="@dimen/dimen_18"
+                    android:layout_height="@dimen/dimen_18"
+                    android:layout_marginHorizontal="@dimen/dimen_15"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:src="@drawable/ic_pencil_edit_button"
+                    app:layout_constraintBottom_toBottomOf="@id/custom_recipients_recycler_view"
+                    app:layout_constraintEnd_toEndOf="@id/custom_recipients_recycler_view"
+                    app:layout_constraintTop_toTopOf="@id/custom_recipients_recycler_view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/recipient_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/colorDocumentBackground"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/loads_list_container"
+                app:layout_constraintStart_toStartOf="@+id/loads_list_container"
+                app:layout_constraintTop_toBottomOf="@id/select_or_add_recipient">
+
+                <TextView
+                    style="@style/BillName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_20"
+                    android:text="Edit Recipient Detail" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10">
+
+                    <NumberPicker
+                        android:id="@+id/numberPicker"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_100"
+                        android:layout_marginHorizontal="@dimen/dimen_20"
+                        android:layout_weight="2.5"
+                        android:theme="@style/NumberPickerText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/add_recipient_text" />
+
+                    <ImageView
+                        android:id="@+id/edit_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_18"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/ic_pencil_edit_button" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--    <NumberPicker-->
+            <!--        app:layout_constraintTop_toBottomOf="@id/add_recipient_text"-->
+            <!--        app:layout_constraintStart_toStartOf="parent"-->
+            <!--        android:id="@+id/numberPicker"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:layout_marginHorizontal="@dimen/dimen_20"/>-->
+
+            <Button
+                android:id="@+id/transmit"
+                style="@style/CameraUploadButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_60"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="Transmit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/custom_recipients_recycler_view_wrapper" />
+
+            <!--    <Button-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        app:layout_constraintTop_toBottomOf="@id/add_recipient_text"-->
+            <!--        android:layout_marginHorizontal="@dimen/dimen_40"-->
+            <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--        android:text="Transmit"-->
+            <!--        android:textColor="@color/colorWhite"-->
+            <!--        android:background="@color/blue_212537"-->
+            <!--        android:textAllCaps="false"/>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

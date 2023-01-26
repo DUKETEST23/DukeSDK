@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="@dimen/dimen_12"
+        android:height="@dimen/dimen_12"
+        android:drawable="@drawable/ic_dollar_symbol" />
+
+</layer-list>

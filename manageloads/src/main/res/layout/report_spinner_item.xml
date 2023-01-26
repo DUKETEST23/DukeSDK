@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.UploadPreviewFragment">
+
+    <TextView
+        android:id="@+id/report_dropdown_item"
+        style="@style/ReportSpinnerItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/bottom_border"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_below="@id/report_dropdown_item"
+        android:background="@color/colorAmount" />
+
+    <ImageView
+        android:id="@+id/dropdown_icon"
+        android:layout_width="@dimen/dimen_10"
+        android:layout_height="@dimen/dimen_7"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/dimen_5"
+        android:src="@drawable/ic_dropdown" />
+
+</RelativeLayout>

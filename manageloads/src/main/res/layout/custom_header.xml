@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/dimen_15"
+    android:paddingTop="@dimen/dimen_10"
+    android:paddingEnd="@dimen/dimen_15"
+    android:paddingBottom="@dimen/dimen_10"
+    android:background="@color/colorTransparent">
+
+    <ImageView
+        android:id="@+id/toolbar_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/back_button"
+        android:padding="@dimen/dimen_5"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/header_title"
+        style="@style/HeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/home"
+        android:textAllCaps="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        style="@style/HeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/title"
+        android:textAllCaps="true" />
+
+    <ImageView
+        android:id="@+id/header_image"
+        android:layout_width="@dimen/dimen_45"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/profile_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/header_profile" />
+
+    <TextView
+        android:id="@+id/profile_text"
+        style="@style/FontBebas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_image"
+        android:layout_alignStart="@+id/header_image"
+        android:layout_alignEnd="@+id/header_image"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:gravity="center"
+        android:text="PROFILE"
+        android:textColor="@color/colorBrightGrey"
+        android:textSize="@dimen/font_10" />
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_20">
+
+    <TextView
+        android:id="@+id/confirmation_title"
+        style="@style/ConfirmationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="TITLE" />
+
+    <TextView
+        android:id="@+id/confirmation_message"
+        style="@style/ConfirmationMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:textSize="@dimen/font_16"
+        android:layout_below="@+id/confirmation_title"
+        tools:text="Message that is long enough to provide an idea about how long it may stretch." />
+
+    <TextView
+        android:id="@+id/extra_text"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmation_message"
+        tools:text="Message that is long enough to provide an idea about how long it may stretch." />
+
+    <Button
+        android:id="@+id/neutral_button"
+        style="@style/NeutralButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/extra_text"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickNeutralButton"
+        tools:text="OK" />
+
+    <Button
+        android:id="@+id/positive_button"
+        style="@style/PositiveButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/extra_text"
+        android:layout_alignBaseline="@id/negative_button"
+        android:layout_alignParentEnd="true"
+        android:onClick="onClickPositiveButton"
+        tools:text="Agree" />
+
+    <Button
+        android:id="@+id/negative_button"
+        style="@style/NegativeButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/extra_text"
+        android:onClick="onClickNegativeButton"
+        android:layout_toLeftOf="@+id/positive_button"
+        tools:text="Cancel" />
+
+    <Button
+        android:id="@+id/openFile"
+        style="@style/NeutralButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/neutral_button"
+        android:layout_alignBottom="@id/neutral_button"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@id/neutral_button"
+        android:text="Open"
+        android:onClick="onClickOpenFile"
+        android:textAllCaps="false"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

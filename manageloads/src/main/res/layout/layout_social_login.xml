@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/dimen_10"
+    android:paddingTop="@dimen/dimen_15"
+    android:paddingBottom="@dimen/dimen_10">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical|right">
+
+        <TextView
+            android:id="@+id/social_login_info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="OR Login with" />
+
+        <LinearLayout
+            android:id="@+id/social_icon_section"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/facebook"
+                style="@style/socialLoginIcon"
+                android:layout_marginLeft="@dimen/dimen_20"
+                android:src="@drawable/ic_facebook" />
+
+            <ImageView
+                android:id="@+id/google"
+                style="@style/socialLoginIcon"
+                android:layout_width="19dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_google" />
+
+            <ImageView
+                android:id="@+id/apple"
+                style="@style/socialLoginIcon"
+                android:src="@drawable/ic_apple" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

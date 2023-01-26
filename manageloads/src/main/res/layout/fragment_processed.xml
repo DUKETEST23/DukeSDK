@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.ProcessedFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/processedDocumentsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparentWhite">
+
+        <FrameLayout
+            android:id="@+id/search_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_5"
+            android:background="@drawable/search_bg_rect"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_margin="@dimen/dimen_5"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dimen_5">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dimen_18"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:src="@drawable/ic_magnifying_glass" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Search for documents..."
+                    android:textColor="#F3757575"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/processed_documents_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:paddingTop="@dimen/dimen_5"
+            android:paddingBottom="@dimen/dimen_10"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/search_frame" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/processed_empty_card"
+        layout="@layout/empty_documents_view"
+        android:visibility="gone" />
+</RelativeLayout>
