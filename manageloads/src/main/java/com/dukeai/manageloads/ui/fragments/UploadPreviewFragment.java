@@ -357,6 +357,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         } else if (Duke.uploadingImagesList != null && Duke.uploadingImagesList.size() > 0) {
             previewImage.setImageBitmap(Duke.uploadingImagesList.get(Duke.uploadingImagesList.size() - 1));
             Log.e("LIBRARY~", "setImageView-2()");
+            customProgressLoader.dismiss();
             if (customProgressLoader != null && customProgressLoader.isShowing()) {
                 customProgressLoader.dismiss();
             }
