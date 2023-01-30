@@ -254,6 +254,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             Log.e("LIBRARY~", "getArgumentsData()");
 
             customProgressLoader.hideDialog();
+//            Log.e("loader", )
 
 //            if (customProgressLoader != null && customProgressLoader.isShowing()) {
 //                customProgressLoader.hideDialog();
@@ -365,10 +366,10 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         } else if (Duke.uploadingImagesList != null && Duke.uploadingImagesList.size() > 0) {
             previewImage.setImageBitmap(Duke.uploadingImagesList.get(Duke.uploadingImagesList.size() - 1));
             Log.e("LIBRARY~", "setImageView-2()");
-            customProgressLoader.dismiss();
-            if (customProgressLoader != null && customProgressLoader.isShowing()) {
-                customProgressLoader.dismiss();
-            }
+            customProgressLoader.hideDialog();
+//            if (customProgressLoader != null && customProgressLoader.isShowing()) {
+//                customProgressLoader.dismiss();
+//            }
         } else {
             Log.e("LIBRARY~", "setImageView-3()");
         }
@@ -435,7 +436,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         uploadDocumentInterface = null;
         popupActions = null;
         if (customProgressLoader != null && customProgressLoader.isShowing()) {
-            customProgressLoader.dismiss();
+            customProgressLoader.hideDialog();
         }
     }
 
@@ -443,7 +444,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     public void onResume() {
         super.onResume();
         if (customProgressLoader != null && customProgressLoader.isShowing()) {
-            customProgressLoader.dismiss();
+            customProgressLoader.hideDialog();
         }
     }
 
@@ -451,7 +452,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     public void onDestroyView() {
         super.onDestroyView();
         if (customProgressLoader != null && customProgressLoader.isShowing()) {
-            customProgressLoader.dismiss();
+            customProgressLoader.hideDialog();
         }
     }
 
@@ -459,7 +460,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     public void onDestroy() {
         super.onDestroy();
         if (customProgressLoader != null && customProgressLoader.isShowing()) {
-            customProgressLoader.dismiss();
+            customProgressLoader.hideDialog();
         }
     }
 
