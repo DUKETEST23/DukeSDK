@@ -253,9 +253,11 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             System.out.println("LIBRARY~" + "getArgumentsData()");
             Log.e("LIBRARY~", "getArgumentsData()");
 
-            if (customProgressLoader != null && customProgressLoader.isShowing()) {
-                customProgressLoader.dismiss();
-            }
+            customProgressLoader.hideDialog();
+
+//            if (customProgressLoader != null && customProgressLoader.isShowing()) {
+//                customProgressLoader.hideDialog();
+//            }
 
 //            setImageView(imageBitmap);
         }

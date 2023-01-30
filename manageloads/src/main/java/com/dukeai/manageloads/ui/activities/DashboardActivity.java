@@ -156,9 +156,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
         String password = in.getStringExtra("password");
 
         getAuthStatus();
-        customProgressLoader.showDialog();
-        customProgressLoader.hideDialog();
-
+//        customProgressLoader.showDialog();
+//        customProgressLoader.hideDialog();
     }
 
     public void getAuthStatus() {
