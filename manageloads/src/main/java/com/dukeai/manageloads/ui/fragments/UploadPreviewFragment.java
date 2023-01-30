@@ -209,7 +209,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         getArgumentsData();
         getWindowWidthAndHeight();
         setRecyclerView();
-        setImageView(null);
+//        setImageView(null);
     }
 
     private void getArgumentsData() {
@@ -252,6 +252,8 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
             System.out.println("LIBRARY~" + "getArgumentsData()");
             Log.e("LIBRARY~", "getArgumentsData()");
+
+//            setImageView(imageBitmap);
         }
     }
 
