@@ -369,6 +369,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
     private void openPreviewImage(String path, String address, String lat, String longi) {
         Bundle args = new Bundle();
         args.putString(AppConstants.UploadDocumentsConstants.BITMAP_IMAGE, path);
+        Log.e("FILE_PATH", path);
         args.putString("address", address);
         args.putString("lat", lat);
         args.putString("longi", longi);
