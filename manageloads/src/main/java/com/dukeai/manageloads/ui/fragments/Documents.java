@@ -37,9 +37,6 @@ import com.dukeai.manageloads.views.CustomHeader;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import  static  com.dukeai.manageloads.Duke.isDocumentAddingToLoad;
-
-
 public class Documents extends Fragment implements HeaderActions, UpdateTabStylesListener, UpdateTabCount {
 
     private String TAG = Documents.class.getSimpleName();
@@ -313,7 +310,9 @@ public class Documents extends Fragment implements HeaderActions, UpdateTabStyle
                 Utilities.resetFileData();
                 if(isLoadDocument) {
                     Duke.isNewLoadBeingCreated = false;
-                    isDocumentAddingToLoad = true;
+                    Duke.isDocumentAddingToLoad = true;
+//                    Duke.isNewLoadBeingCreated = false;
+//                    Duke.isDocumentAddingToLoad = true;
                 }
                 uploadDocumentInterface.uploadDocumentListener(false);
             }
