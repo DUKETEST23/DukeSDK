@@ -145,7 +145,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
     private void initViews() {
         context = this;
-        customProgressLoader = new CustomProgressLoader(this);
+//        customProgressLoader = new CustomProgressLoader(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         Intent in = getIntent();
