@@ -331,7 +331,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
     }
 
     private void previewCapturedImage() {
-        final CustomProgressLoader customProgressLoader = new CustomProgressLoader(this);
+//        final CustomProgressLoader customProgressLoader = new CustomProgressLoader(this);
         customProgressLoader.showDialog();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         }
@@ -351,15 +351,15 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                             System.out.println("Current Lat " + latitude + " Long " + longitude);
                             openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                         }
-                        customProgressLoader.dismiss();
+                        customProgressLoader.hideDialog();
                     } catch (Exception e) {
                         openPreviewImage(Duke.imageStoragePath, "none", "", "");
                         Log.d("location not fetched", e.getLocalizedMessage());
-                        customProgressLoader.dismiss();
+                        customProgressLoader.hideDialog();
                     }
                 } else {
                     openPreviewImage(Duke.imageStoragePath, "none", "", "");
-                    customProgressLoader.dismiss();
+                    customProgressLoader.hideDialog();
                 }
             }
         });
