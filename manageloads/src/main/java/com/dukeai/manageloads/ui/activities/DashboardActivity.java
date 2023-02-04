@@ -145,7 +145,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
     private void initViews() {
         context = this;
-//        customProgressLoader = new CustomProgressLoader(this);
+        customProgressLoader = new CustomProgressLoader(this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         Intent in = getIntent();
@@ -216,8 +216,9 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
         ChangeThemeModel changeThemeModel = new ChangeThemeModel();
         parent_layout.setBackgroundColor(Color.parseColor(changeThemeModel.getBackgroundColor()));
 //        NavigationFlowManager.openFragments(new LoadsFragment(), args, this, R.id.dashboard_wrapper);
-        NavigationFlowManager.addNewFragment(new LoadsFragment(),null,this,R.id.dashboard_wrapper);
         customProgressLoader.hideDialog();
+        NavigationFlowManager.addNewFragment(new LoadsFragment(),null,this,R.id.dashboard_wrapper);
+//        customProgressLoader.hideDialog();
     }
 
     @Override
