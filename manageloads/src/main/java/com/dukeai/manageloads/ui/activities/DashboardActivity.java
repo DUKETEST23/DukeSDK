@@ -242,8 +242,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 /**Fix for Image Rotation Issue**/
                 rotateImageIfNecessary(Duke.imageStoragePath);
                 if (Duke.isLocationPermissionProvided) {
-//                    previewCapturedImage();
-                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
+                    previewCapturedImage();
+//                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                 } else {
 //                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
