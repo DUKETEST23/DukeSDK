@@ -242,8 +242,11 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 /**Fix for Image Rotation Issue**/
                 rotateImageIfNecessary(Duke.imageStoragePath);
                 if (Duke.isLocationPermissionProvided) {
-                    previewCapturedImage();
-//                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
+//                    previewCapturedImage();
+                    Log.e("Location-1", address);
+                    Log.e("Location-2", latitude);
+                    Log.e("Location-3", longitude);
+                    openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                 } else {
 //                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -333,8 +336,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
     private void previewCapturedImage() {
         Log.e("Print-1", "inside preview");
-        final CustomProgressLoader customProgressLoader = new CustomProgressLoader(this);
-        customProgressLoader.showDialog();
+//        final CustomProgressLoader customProgressLoader = new CustomProgressLoader(this);
+//        customProgressLoader.showDialog();
         Log.e("Print-2", "after loader init");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
         }
@@ -354,16 +357,16 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                             System.out.println("Current Lat " + latitude + " Long " + longitude);
                             openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                         }
-                        customProgressLoader.hideDialog();
+//                        customProgressLoader.hideDialog();
                         Log.e("ERROR-1", address);
                     } catch (Exception e) {
                         openPreviewImage(Duke.imageStoragePath, "none", "", "");
                         Log.d("location not fetched", e.getLocalizedMessage());
-                        customProgressLoader.hideDialog();
+//                        customProgressLoader.hideDialog();
                     }
                 } else {
                     openPreviewImage(Duke.imageStoragePath, "none", "", "");
-                    customProgressLoader.hideDialog();
+//                    customProgressLoader.hideDialog();
                     Log.e("ERROR-2", "Location is null");
                 }
             }
