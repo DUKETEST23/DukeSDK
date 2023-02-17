@@ -71,6 +71,9 @@ import com.dukeai.manageloads.viewmodel.FileStatusViewModel;
 import com.dukeai.manageloads.viewmodel.LoadsViewModel;
 import com.dukeai.manageloads.viewmodel.UploadFileViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -243,7 +246,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 /**Fix for Image Rotation Issue**/
                 rotateImageIfNecessary(Duke.imageStoragePath);
                 if (Duke.isLocationPermissionProvided) {
-                    ArrayList<String> addr = fetchLocation();
+//                    ArrayList<String> addr = fetchLocation();
+                    requestNewLocationData();
 //                    Log.d("current address-4", addr.get(0));
 //                    Log.d("current address-5", addr.get(1));
 //                    Log.d("current address-6", addr.get(3));
@@ -423,6 +427,44 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
         });
         Log.d("current address", address);
     }
+
+    private void requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(5);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        // setting LocationRequest
+        // on FusedLocationClient
+
+        FusedLocationProviderClient mFusedLocationClient;
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+    }
+
+    private LocationCallback mLocationCallback = new LocationCallback() {
+
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+            Log.d("location data: -", mLastLocation.getProvider());
+            openPreviewImage(Duke.imageStoragePath, "", String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+        }
+    };
 
     private ArrayList<String> fetchLocation() {
 
