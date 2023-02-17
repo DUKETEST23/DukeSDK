@@ -244,14 +244,11 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 rotateImageIfNecessary(Duke.imageStoragePath);
                 if (Duke.isLocationPermissionProvided) {
                     ArrayList<String> addr = fetchLocation();
-                    Log.d("current address-4", addr.get(0));
-                    Log.d("current address-5", addr.get(1));
-                    Log.d("current address-6", addr.get(3));
+//                    Log.d("current address-4", addr.get(0));
+//                    Log.d("current address-5", addr.get(1));
+//                    Log.d("current address-6", addr.get(3));
 
 //                    previewCapturedImage();
-//                    Log.e("Location-1", address);
-//                    Log.e("Location-2", latitude);
-//                    Log.e("Location-3", longitude);
 //                    openPreviewImage(Duke.imageStoragePath, addr.get(0), addr.get(1), addr.get(2));
                 } else {
 //                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
@@ -457,7 +454,10 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                             loc.add(address);
                             loc.add(latitude);
                             loc.add(longitude);
-                            openPreviewImage(Duke.imageStoragePath, loc.get(0), loc.get(1), loc.get(2));
+                            Log.e("Location-1", address);
+                            Log.e("Location-2", latitude);
+                            Log.e("Location-3", longitude);
+                            openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                         }
                     } catch (Exception e) {
                         Log.d("location not fetched", e.getLocalizedMessage());
