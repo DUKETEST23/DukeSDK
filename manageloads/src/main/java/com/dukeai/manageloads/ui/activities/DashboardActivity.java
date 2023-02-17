@@ -193,15 +193,16 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.yellow_BBAE27));
         }
     }
-    private void loadFragments(String idToken, String refreshToken, String accessToken,String userName,String password) {
+
+    private void loadFragments(String idToken, String refreshToken, String accessToken, String userName, String password) {
 
 
-        Bundle args  =  new Bundle();
-        args.putString("accessToken",accessToken);
-        args.putString("idToken ",idToken );
-        args.putString("refreshToken",refreshToken);
-        args.putString("userName",userName);
-        args.putString("password",password);
+        Bundle args = new Bundle();
+        args.putString("accessToken", accessToken);
+        args.putString("idToken ", idToken);
+        args.putString("refreshToken", refreshToken);
+        args.putString("userName", userName);
+        args.putString("password", password);
 
 //        CognitoIdToken id = new CognitoIdToken("eyJraWQiOiJiTEw2ZTYrb21wbHo3SG5INkxGeEh4ZGFuRmNBUzU5a09XOElFOFhLb3pzPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmNTE4MGI2ZS02MjIxLTRkZjItOWQzMy0xOTAwOGNhOWMwOGUiLCJjb2duaXRvOmdyb3VwcyI6WyJhY2NvdW50YW50cyIsInVzZXJzIl0sImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9RVm1JS1MzYUEiLCJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOmZhbHNlLCJjb2duaXRvOnVzZXJuYW1lIjoiUFJBREhVTU5ARElWQU1JLkNPTSIsImF1ZCI6IjdqaTVkZjdiZ3FtbnZ0YjRtNTI3bzEzNGVlIiwiZXZlbnRfaWQiOiIzNDAzMWI1Yy03ZGIwLTRjNzItYjYwNS0wYTczYmMwNmZkMGMiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTY2NTQ5MjIxMiwibmFtZSI6IlBSQURIVU1OQERJVkFNSS5DT00iLCJwaG9uZV9udW1iZXIiOiIrMTIzNDU2Nzg5NTgiLCJjdXN0b206YXBwX3R5cGUiOiJEVUtFIiwiZXhwIjoxNjY1NDk1ODEyLCJpYXQiOjE2NjU0OTIyMTIsImVtYWlsIjoiUFJBREhVTU5ARElWQU1JLkNPTSJ9.V4bJAJGDognVtPb5sjZlk7Np5HDgsYx9ldjWVTKrua80ce6xGrh4mL7bTDto1UrJsNOlbvSsy4gkBCC9aharYlzDW4XRhDlgxNSbEnfvFqUHSTWjue8A3mzzCiN15pRiBBwZS567WI5RE0frVfS06m9OUKY7OzhaMfTuPDoklj9SBqPD53A6Ad-7paoTf-VJ64-EynL73i_zzBTXAUPKFpmu0s9XDqPZLVqs2ORLBcOY0MLfyZiDsxfNkaHWxkG9_2RvXSVm2v0jraBFB-RFXb1v2BQQtzOqFz-vkhRBZha-fFAr8Ez7TeBEWnSLx3tgHMZP3KghXa_9FqmRbmYk5g");
         CognitoIdToken id = new CognitoIdToken(idToken);
@@ -212,12 +213,12 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
         userConfig.setUserDataModel(userDataModel);
 
-        parent_layout= findViewById(R.id.parent_layout);
+        parent_layout = findViewById(R.id.parent_layout);
         ChangeThemeModel changeThemeModel = new ChangeThemeModel();
         parent_layout.setBackgroundColor(Color.parseColor(changeThemeModel.getBackgroundColor()));
 //        NavigationFlowManager.openFragments(new LoadsFragment(), args, this, R.id.dashboard_wrapper);
 //        customProgressLoader.hideDialog();
-        NavigationFlowManager.addNewFragment(new LoadsFragment(),null,this,R.id.dashboard_wrapper);
+        NavigationFlowManager.addNewFragment(new LoadsFragment(), null, this, R.id.dashboard_wrapper);
 //        customProgressLoader.hideDialog();
     }
 
@@ -242,11 +243,13 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 /**Fix for Image Rotation Issue**/
                 rotateImageIfNecessary(Duke.imageStoragePath);
                 if (Duke.isLocationPermissionProvided) {
+                    ArrayList<String> addr = fetchLocation();
+
 //                    previewCapturedImage();
-                    Log.e("Location-1", address);
-                    Log.e("Location-2", latitude);
-                    Log.e("Location-3", longitude);
-                    openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
+//                    Log.e("Location-1", address);
+//                    Log.e("Location-2", latitude);
+//                    Log.e("Location-3", longitude);
+                    openPreviewImage(Duke.imageStoragePath, addr.get(0), addr.get(1), addr.get(2));
                 } else {
 //                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -419,6 +422,49 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
             }
         });
         Log.d("current address", address);
+    }
+
+    private ArrayList<String> fetchLocation() {
+
+        ArrayList<String> loc = new ArrayList<String>();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+//            return TODO;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+                    try {
+                        Geocoder geocoder = new Geocoder(DashboardActivity.this, Locale.getDefault());
+                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        Log.d("location fetched", addresses.get(0).getAddressLine(0));
+                        if (addresses.get(0) != null && addresses.get(0).getAddressLine(0).length() > 0) {
+                            address = addresses.get(0).getAddressLine(0);
+                            latitude = String.valueOf(location.getLatitude());
+                            longitude = String.valueOf(location.getLongitude());
+                            loc.add(address);
+                            loc.add(latitude);
+                            loc.add(longitude);
+                        }
+                    } catch (Exception e) {
+                        Log.d("location not fetched", e.getLocalizedMessage());
+                    }
+                } else {
+
+                }
+            }
+        });
+        Log.d("current address", address);
+        return loc;
     }
 
     private void performUploadTasks(Intent data, String locationToBE, String latitude, String longitude) {
