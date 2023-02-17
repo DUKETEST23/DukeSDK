@@ -467,9 +467,9 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 }
             }
         });
-        Log.d("current address-1", loc.get(0));
-        Log.d("current address-2", loc.get(1));
-        Log.d("current address-3", loc.get(3));
+//        Log.d("current address-1", loc.get(0));
+//        Log.d("current address-2", loc.get(1));
+//        Log.d("current address-3", loc.get(3));
         return loc;
     }
 
