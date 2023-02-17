@@ -457,6 +457,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                             Log.e("Location-1", address);
                             Log.e("Location-2", latitude);
                             Log.e("Location-3", longitude);
+                            customProgressLoader.hideDialog();
                             openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                         }
                     } catch (Exception e) {
