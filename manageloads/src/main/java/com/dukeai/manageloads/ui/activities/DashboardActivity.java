@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -67,8 +66,6 @@ import com.dukeai.manageloads.utils.UriUtils;
 import com.dukeai.manageloads.utils.UserConfig;
 import com.dukeai.manageloads.utils.Utilities;
 import com.dukeai.manageloads.viewmodel.AuthenticationViewModel;
-import com.dukeai.manageloads.viewmodel.FileStatusViewModel;
-import com.dukeai.manageloads.viewmodel.LoadsViewModel;
 import com.dukeai.manageloads.viewmodel.UploadFileViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -134,6 +131,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
     private Intent mServiceIntent;
     private String latlong = "";
     private AuthenticationViewModel authViewModel;
+    private Geocoder geocoder;
+    private String realPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,7 +257,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 //                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         Duke.isLocationPermissionProvided = true;
-                        getCurrentLocation(data);
+                        requestNewLocationData();
+//                        getCurrentLocation(data);
                     } else {
                         openPreviewImage(Duke.imageStoragePath, "none", "", "");
                     }
@@ -276,13 +276,34 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
             //Fetch Location - if permission is available
             if (Duke.isLocationPermissionProvided) {
-                getCurrentLocation(data);
+                Uri uri = null;
+                if (data != null) {
+                    if (data.getClipData() != null) {
+                        //do nothing
+                    } else {
+                        uri2 = data.getData();
+                        ContentResolver cR = context.getContentResolver();
+//                        MimeTypeMap mime = MimeTypeMap.getSingleton();
+//                        String type = mime.getExtensionFromMimeType(cR.getType(uri2));
+                        if (data.getData() != null) {
+                            uri = data.getData();
+                        } else {
+                            uri = data.getClipData().getItemAt(0).getUri();
+                        }
+                        realPath = UriUtils.getMediaFilePathForN(uri, this);
+                        Duke.imageStoragePath = realPath;
+                        requestNewLocationData();
+                    }
+                }
+
             } else {
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     Duke.isLocationPermissionProvided = true;
-                    getCurrentLocation(data);
+//                    getCurrentLocation(data);
+                    requestNewLocationData();
                 } else {
-                    performUploadTasks(data, "none", latitude, longitude);
+//                    performUploadTasks(data, "none", latitude, longitude);
+                    openPreviewImage(Duke.imageStoragePath, "none", "", "");
                 }
             }
 
@@ -432,6 +453,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
         // Initializing LocationRequest
         // object with appropriate methods
+        customProgressLoader.showDialog();
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(5);
@@ -462,7 +484,27 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
             Log.d("location data: -", mLastLocation.getProvider());
-            openPreviewImage(Duke.imageStoragePath, "", String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+            String addr = null;
+            try {
+                geocoder = new Geocoder(DashboardActivity.this, Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 1);
+                addr = addresses.get(0).getAddressLine(0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(Duke.imageStoragePath.length()<1) {
+                Duke.imageStoragePath = realPath;
+            }
+            if(addr!=null) {
+                Log.d("@@Address: ", addr);
+                openPreviewImage(Duke.imageStoragePath, addr, String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+
+            } else {
+                openPreviewImage(Duke.imageStoragePath, "", String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+            }
+            if(customProgressLoader != null && customProgressLoader.isShowing()) {
+                customProgressLoader.hideDialog();
+            }
         }
     };
 
