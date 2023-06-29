@@ -111,7 +111,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     RelativeLayout cancleLayout;
     ImageView closeMark;
     ImageView camIcon;
-    TextView rescan;
+    Button rescan;
 
     LoadsViewModel loadsViewModel;
     UploadDocumentInterface uploadDocumentInterface;
@@ -158,6 +158,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         // Inflate the layout for this fragment
         uploadPreview = inflater.inflate(R.layout.fragment_upload_preview, container, false);
         popupActions = this;
+        rescan = uploadPreview.findViewById(R.id.rescan_txt);
         initViews(uploadPreview);
         setCustomHeader(uploadPreview);
         setCurrentTheme();
@@ -168,7 +169,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         previewImage = v.findViewById(R.id.preview_image);
         scrollView = v.findViewById(R.id.list_view);
         imagesRecyclerView = v.findViewById(R.id.images_view);
-        rescan = v.findViewById(R.id.rescan_txt);
+
         uploadButton = v.findViewById(R.id.upload_button);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,12 +194,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
 
-//        rescan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onClickRescan();
-//            }
-//        });
+        rescan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRescan(view);
+            }
+        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
@@ -1046,7 +1047,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 //        rescan.setText(spannableString);
     }
 
-    public void onClickRescan(View view) {
+    public void navigateToRescan(View view) {
         Duke.letUserAdjustCrop = true;
         resetFileUploads();
         Bundle params = new Bundle();
