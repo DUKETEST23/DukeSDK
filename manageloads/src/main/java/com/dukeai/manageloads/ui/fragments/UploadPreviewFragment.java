@@ -191,7 +191,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
                 onClickCancelAction();
             }
         });
-        rescan = v.findViewById(R.id.rescan);
+        rescan = v.findViewById(R.id.rescan_txt);
         rescan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
