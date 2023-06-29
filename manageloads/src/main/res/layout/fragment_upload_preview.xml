@@ -32,8 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/preview_image"
         style="@style/AlertWindowTitle"
+        android:text="@string/rescan"
         android:textStyle="bold"
         android:textSize="@dimen/font_20"
+        android:onClick="onClickRescan"
         android:layout_marginBottom="@dimen/dimen_20"
         android:layout_above="@id/list_view" />
 

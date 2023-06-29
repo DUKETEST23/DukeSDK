@@ -192,27 +192,27 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
         rescan = v.findViewById(R.id.rescan_txt);
-        rescan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickRescan();
-            }
-        });
+//        rescan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onClickRescan();
+//            }
+//        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
 
     }
 
-    void onClickRescan() {
-        Duke.letUserAdjustCrop = true;
-        resetFileUploads();
-        Bundle params = new Bundle();
-        params.putString("Page", "Upload_Document");
-        if (uploadDocumentInterface != null) {
-            uploadDocumentInterface.uploadDocumentListener(false);
-        }
-    }
+//    public void onClickRescan() {
+//        Duke.letUserAdjustCrop = true;
+//        resetFileUploads();
+//        Bundle params = new Bundle();
+//        params.putString("Page", "Upload_Document");
+//        if (uploadDocumentInterface != null) {
+//            uploadDocumentInterface.uploadDocumentListener(false);
+//        }
+//    }
 
     private void getWindowWidthAndHeight() {
         screenWidth = Utilities.getScreenWidthInPixels(getActivity());
@@ -1037,11 +1037,21 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         cancleLayout.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
         camIcon.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
         addImageView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
-        String rescanTxt = "Rescan?";
-        SpannableString spannableString = new SpannableString(rescanTxt);
-        spannableString.setSpan(new UnderlineSpan(), 0, spannableString.length(), 0);
-        spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+//        String rescanTxt = "Rescan?";
+//        SpannableString spannableString = new SpannableString(rescanTxt);
+//        spannableString.setSpan(new UnderlineSpan(), 0, spannableString.length(), 0);
+//        spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+//
+//        rescan.setText(spannableString);
+    }
 
-        rescan.setText(spannableString);
+    public void onClickRescan(View view) {
+        Duke.letUserAdjustCrop = true;
+        resetFileUploads();
+        Bundle params = new Bundle();
+        params.putString("Page", "Upload_Document");
+        if (uploadDocumentInterface != null) {
+            uploadDocumentInterface.uploadDocumentListener(false);
+        }
     }
 }
