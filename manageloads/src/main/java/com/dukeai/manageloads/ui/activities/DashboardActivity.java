@@ -325,8 +325,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                         filePath = filePath.replace("file://", "");
                     }
                     File scannedFile = new File(filePath);
-                    String absolutePath = scannedFile.getAbsolutePath();
-                    Duke.imageStoragePath = absolutePath;
+                    Duke.imageStoragePath = scannedFile.getAbsolutePath();
                     saveImageForPreview();
                 } else {
                     // Handle the case when no cropped image results are available

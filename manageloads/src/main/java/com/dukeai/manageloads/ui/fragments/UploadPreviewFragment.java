@@ -82,6 +82,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.single.PermissionListener;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -111,7 +114,8 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     RelativeLayout cancleLayout;
     ImageView closeMark;
     ImageView camIcon;
-    Button rescan;
+    Button rescanBtn;
+
 
     LoadsViewModel loadsViewModel;
     UploadDocumentInterface uploadDocumentInterface;
@@ -143,8 +147,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 
     // TODO: Rename and change types and number of parameters
     public static UploadPreviewFragment newInstance() {
-        UploadPreviewFragment fragment = new UploadPreviewFragment();
-        return fragment;
+        return new UploadPreviewFragment();
     }
 
     @Override
@@ -158,8 +161,9 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         // Inflate the layout for this fragment
         uploadPreview = inflater.inflate(R.layout.fragment_upload_preview, container, false);
         popupActions = this;
-        rescan = uploadPreview.findViewById(R.id.rescan_txt);
-        rescan.setOnClickListener(view -> navigateToRescan(view));
+//        ButterKnife.bind(this, uploadPreview);
+        rescanBtn = uploadPreview.findViewById(R.id.rescan);
+        rescanBtn.setOnClickListener(this::navigateToRescan);
         initViews(uploadPreview);
         setCustomHeader(uploadPreview);
         setCurrentTheme();
@@ -170,7 +174,6 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         previewImage = v.findViewById(R.id.preview_image);
         scrollView = v.findViewById(R.id.list_view);
         imagesRecyclerView = v.findViewById(R.id.images_view);
-
         uploadButton = v.findViewById(R.id.upload_button);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
