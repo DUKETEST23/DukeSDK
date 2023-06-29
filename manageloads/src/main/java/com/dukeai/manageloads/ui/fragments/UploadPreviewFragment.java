@@ -159,6 +159,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         uploadPreview = inflater.inflate(R.layout.fragment_upload_preview, container, false);
         popupActions = this;
         rescan = uploadPreview.findViewById(R.id.rescan_txt);
+        rescan.setOnClickListener(view -> navigateToRescan(view));
         initViews(uploadPreview);
         setCustomHeader(uploadPreview);
         setCurrentTheme();
@@ -194,12 +195,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
 
-        rescan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToRescan(view);
-            }
-        });
+//        rescan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                navigateToRescan(view);
+//            }
+//        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
