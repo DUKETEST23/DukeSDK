@@ -204,7 +204,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 
     }
 
-    private void onClickRescan() {
+    void onClickRescan() {
         Duke.letUserAdjustCrop = true;
         resetFileUploads();
         Bundle params = new Bundle();
@@ -1032,19 +1032,16 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     }
 
     private void setCurrentTheme() {
-
+        ChangeThemeModel changeThemeModel = new ChangeThemeModel();
+        closeMark.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
+        cancleLayout.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
+        camIcon.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
+        addImageView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
         String rescanTxt = "Rescan?";
         SpannableString spannableString = new SpannableString(rescanTxt);
         spannableString.setSpan(new UnderlineSpan(), 0, spannableString.length(), 0);
         spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
 
         rescan.setText(spannableString);
-
-        ChangeThemeModel changeThemeModel = new ChangeThemeModel();
-        closeMark.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
-        cancleLayout.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
-        camIcon.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
-        addImageView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(changeThemeModel.getFloatingButtonBackgroundColor())));
-
     }
 }
