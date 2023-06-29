@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 
     }
 }
-rootProject.name = "Duke_Poc"
+rootProject.name = "Duke_SDK_demo"
 include ':app'
 include ':manageloads'
 include ':awsCognitoAuth'

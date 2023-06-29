@@ -26,6 +26,17 @@
         android:layout_marginRight="@dimen/dimen_40"
         android:contentDescription="@string/preview_image" />
 
+    <TextView
+        android:id="@+id/rescan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/preview_image"
+        style="@style/AlertWindowTitle"
+        android:textStyle="bold"
+        android:textSize="@dimen/font_20"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:layout_above="@id/list_view" />
+
     <HorizontalScrollView
         android:id="@+id/list_view"
         android:layout_width="match_parent"

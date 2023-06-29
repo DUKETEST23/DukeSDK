@@ -86,6 +86,7 @@ public class Duke extends Application implements LifecycleObserver {
     public static ArrayList<String> restRecipients = new ArrayList<>();
     public static String TAG = "PM=========>";
     public static String idToken = "";
+    public static boolean letUserAdjustCrop = false;
 
     public static synchronized Duke getInstance() {
         return appContext;

@@ -25,6 +25,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final int BITMAP_SAMPLE_SIZE = 1;
     public static final String IMAGE_EXTENSION = "jpg";
     public static final int LOCATION_TYPE = 5;
+    public static final int DOCUMENT_SCANNER_REQUEST = 23;
     /*public BroadcastReceiver logoutBroadcast = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

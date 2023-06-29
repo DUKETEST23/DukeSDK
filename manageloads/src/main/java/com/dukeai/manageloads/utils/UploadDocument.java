@@ -1,6 +1,7 @@
 package com.dukeai.manageloads.utils;
 
 import static com.dukeai.manageloads.ui.activities.BaseActivity.CAMERA_CAPTURE_IMAGE_REQUEST_CODE;
+import static com.dukeai.manageloads.ui.activities.BaseActivity.DOCUMENT_SCANNER_REQUEST;
 import static com.dukeai.manageloads.ui.activities.BaseActivity.IMAGE_EXTENSION;
 import static com.dukeai.manageloads.ui.activities.BaseActivity.KEY_IMAGE_STORAGE_PATH;
 import static com.dukeai.manageloads.ui.activities.BaseActivity.MEDIA_TYPE_IMAGE;
@@ -17,6 +18,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import androidx.activity.ComponentActivity;
 import androidx.fragment.app.Fragment;
 
 import com.dukeai.manageloads.Duke;
@@ -32,9 +34,13 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.websitebeaver.documentscanner.DocumentScanner;
+import com.websitebeaver.documentscanner.constants.ResponseType;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class
@@ -48,6 +54,7 @@ UploadDocument implements UploadImageActions, PopupActions {
     private Activity baseActivity;
     private ImageSelection imageSelection;
     private Bundle savedInstance;
+    private ArrayList<String> scannedDocs = new ArrayList<>();
 
     public UploadDocument(Context context, Activity activity, Bundle savedInstanceState, Boolean isFromProfile, Fragment fragment) {
         this.baseContext = context;
@@ -89,7 +96,8 @@ UploadDocument implements UploadImageActions, PopupActions {
                                 if (from.equals(AppConstants.UploadDocumentsConstants.FROM_GALLERY)) {
                                     openGallery();
                                 } else {
-                                    captureImage();
+//                                    captureImage();
+                                    openDocumentScanner();
                                 }
                             } else if (report.isAnyPermissionPermanentlyDenied()) {
                                 isPermissionAccepted = false;
@@ -151,6 +159,98 @@ UploadDocument implements UploadImageActions, PopupActions {
             baseActivity.startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
         }
     }
+
+    private void openDocumentScanner() {
+        closeBottomSheetDialog();
+
+
+        DocumentScanner documentScanner = new DocumentScanner(
+                (ComponentActivity) baseContext,
+                (croppedImageResults) -> {
+                    // Handle the cropped image results here
+                    // handleCroppedImageResults(croppedImageResults);
+                    // scannedDocs = croppedImageResults;
+                    System.out.println("#DocScanRes" + Arrays.asList(croppedImageResults));
+                    scannedDocs.addAll(croppedImageResults);
+                    // handleCroppedImageResults();
+                    return null;
+                },
+                (errorMessage) -> {
+                    // Handle the error message here
+                    // handleErrorMessage(errorMessage);
+                    return null;
+                },
+                () -> {
+                    // Handle the user cancellation here
+                    // handleUserCancellation();
+                    return null;
+                },
+                ResponseType.IMAGE_FILE_PATH,
+                Duke.letUserAdjustCrop,
+                1,
+                100
+        );
+
+
+//        Intent intent = new DocumentScanner(
+//                (ComponentActivity) baseContext,
+//                (croppedImageResults) -> {
+//                    // Handle the cropped image results here
+////                    handleCroppedImageResults(croppedImageResults);
+////                    scannedDocs = croppedImageResults;
+//                    System.out.println("#DocScanRes" + Arrays.asList(croppedImageResults));
+//                    scannedDocs.addAll(croppedImageResults);
+////                    handleCroppedImageResults();
+//                    return null;
+//                },
+//                (errorMessage) -> {
+//                    // Handle the error message here
+////                    handleErrorMessage(errorMessage);
+//                    return null;
+//                },
+//                () -> {
+//                    // Handle the user cancellation here
+////                    handleUserCancellation();
+//                    return null;
+//                },
+//                ResponseType.IMAGE_FILE_PATH,
+//                null,
+//                null
+//        ).createDocumentScanIntent();
+
+        Intent intent = documentScanner.createDocumentScanIntent();
+
+//        documentScanLauncher.launch(intent);
+
+        File file = null;
+        try {
+            file = CameraUtils.createImageFile(baseActivity);
+        } catch (IOException ignored) {
+        }
+        if (file != null) {
+            if (fromProfile) {
+                Duke.profileImageStoragePath = file.getAbsolutePath();
+            } else {
+                Duke.imageStoragePath = file.getAbsolutePath();
+            }
+        }
+
+//        documentScanner.handleDocumentScanIntentResult();
+
+        Uri fileUri = CameraUtils.getOutputMediaFileUri(baseActivity.getApplicationContext(), file);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+//        intent.putStringArrayListExtra(, scannedDocs);
+        intent.putStringArrayListExtra("ScannedDocs", scannedDocs);
+        if (fromProfile) {
+            fragment.startActivityForResult(intent, DOCUMENT_SCANNER_REQUEST);
+        } else {
+            baseActivity.startActivityForResult(intent, DOCUMENT_SCANNER_REQUEST);
+        }
+
+//        documentScanner.handleDocumentScanIntentResult();
+//        documentScanLauncher.launch(intent);
+    }
+
 
     private void closeBottomSheetDialog() {
         imageSelection.dismissDialog();

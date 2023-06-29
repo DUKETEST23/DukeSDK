@@ -1,6 +1,7 @@
 package com.dukeai.manageloads.ui.activities;
 
 import static com.dukeai.manageloads.ui.activities.BaseActivity.CAMERA_CAPTURE_IMAGE_REQUEST_CODE;
+import static com.dukeai.manageloads.ui.activities.BaseActivity.DOCUMENT_SCANNER_REQUEST;
 import static com.dukeai.manageloads.ui.activities.BaseActivity.PICK_IMAGE_REQUEST;
 
 import androidx.annotation.NonNull;
@@ -307,10 +308,56 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 }
             }
 
+        } else if(requestCode == DOCUMENT_SCANNER_REQUEST){
+            System.out.println("Working so far!");
+
+            if (resultCode == RESULT_OK) {
+
+                ArrayList<String> doc = data.getStringArrayListExtra(
+                        "croppedImageResults"
+                );
+
+                if (doc != null && !doc.isEmpty()) {
+                    // Get the absolute path of the scanned document
+                    String filePath = doc.get(0);
+                    System.out.println("Scanned Document: " + filePath);
+                    if(filePath.charAt(0)=='f'){
+                        filePath = filePath.replace("file://", "");
+                    }
+                    File scannedFile = new File(filePath);
+                    String absolutePath = scannedFile.getAbsolutePath();
+                    Duke.imageStoragePath = absolutePath;
+                    saveImageForPreview();
+                } else {
+                    // Handle the case when no cropped image results are available
+                    System.out.println("No Scanned Documents found!");
+                }
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle user cancellation
+                Log.v("documentscannerlogs", "User canceled document scan");
+            } else {
+                // Handle other result codes or errors
+                Log.v("documentscannerlogs", "Document scan failed with result code: " + resultCode);
+            }
+
         } else {
             //Call Fragment's onActivityResult
             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.dashboard_wrapper);
             fragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void saveImageForPreview() {
+        /**Fix for Image Rotation Issue**/
+        rotateImageIfNecessary(Duke.imageStoragePath);
+        if (Duke.isLocationPermissionProvided) {
+            previewCapturedImage();
+        } else {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                Duke.isLocationPermissionProvided = true;
+            } else {
+                openPreviewImage(Duke.imageStoragePath, "none", "", "");
+            }
         }
     }
 

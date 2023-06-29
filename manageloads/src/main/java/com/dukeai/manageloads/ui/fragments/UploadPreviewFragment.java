@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.Build;
@@ -20,6 +21,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +32,7 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -106,6 +111,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     RelativeLayout cancleLayout;
     ImageView closeMark;
     ImageView camIcon;
+    TextView rescan;
 
     LoadsViewModel loadsViewModel;
     UploadDocumentInterface uploadDocumentInterface;
@@ -170,6 +176,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
         addImageView = v.findViewById(R.id.add_picture);
+
         addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,10 +191,27 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
                 onClickCancelAction();
             }
         });
+        rescan = v.findViewById(R.id.rescan);
+        rescan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickRescan();
+            }
+        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
 
+    }
+
+    private void onClickRescan() {
+        Duke.letUserAdjustCrop = true;
+        resetFileUploads();
+        Bundle params = new Bundle();
+        params.putString("Page", "Upload_Document");
+        if (uploadDocumentInterface != null) {
+            uploadDocumentInterface.uploadDocumentListener(false);
+        }
     }
 
     private void getWindowWidthAndHeight() {
@@ -451,6 +475,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Duke.letUserAdjustCrop = false;
         if (customProgressLoader != null && customProgressLoader.isShowing()) {
             customProgressLoader.hideDialog();
         }
@@ -949,7 +974,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 
     @Override
     public void onUploadSelection(String string) {
-
+        Duke.letUserAdjustCrop = false;
 //        uploadSelectionBottomSheet.hideDialog();
         UserConfig userConfig = UserConfig.getInstance();
         UserDataModel userDataModel;
@@ -1007,6 +1032,13 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
     }
 
     private void setCurrentTheme() {
+
+        String rescanTxt = "Rescan?";
+        SpannableString spannableString = new SpannableString(rescanTxt);
+        spannableString.setSpan(new UnderlineSpan(), 0, spannableString.length(), 0);
+        spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, spannableString.length(), 0);
+
+        rescan.setText(spannableString);
 
         ChangeThemeModel changeThemeModel = new ChangeThemeModel();
         closeMark.setColorFilter(Color.parseColor(changeThemeModel.getFloatingButtonColor()));
