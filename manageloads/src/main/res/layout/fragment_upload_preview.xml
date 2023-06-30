@@ -104,7 +104,8 @@
             android:textStyle="bold"
             android:onClick="navigateToRescan"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap" />
 
         <RelativeLayout
             android:id="@+id/add_picture"

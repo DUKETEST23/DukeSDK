@@ -162,8 +162,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         uploadPreview = inflater.inflate(R.layout.fragment_upload_preview, container, false);
         popupActions = this;
 //        ButterKnife.bind(this, uploadPreview);
-        rescanBtn = uploadPreview.findViewById(R.id.rescan);
-        rescanBtn.setOnClickListener(this::navigateToRescan);
+
         initViews(uploadPreview);
         setCustomHeader(uploadPreview);
         setCurrentTheme();
@@ -175,6 +174,8 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         scrollView = v.findViewById(R.id.list_view);
         imagesRecyclerView = v.findViewById(R.id.images_view);
         uploadButton = v.findViewById(R.id.upload_button);
+        rescanBtn = v.findViewById(R.id.rescan);
+        rescanBtn.setOnClickListener(this::navigateToRescan);
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
