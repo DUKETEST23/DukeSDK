@@ -96,7 +96,7 @@
             android:text="@string/upload_caps" />
 
         <Button
-            android:id="@+id/rescan"
+            android:id="@+id/rescan_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/CameraUploadButton"
