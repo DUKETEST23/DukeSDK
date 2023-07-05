@@ -422,9 +422,9 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         /*if (Duke.uploadingImagesList.size() < 5 && !isLoadDocument && !Duke.isDocumentBeingScanned) {
             addImageView.setVisibility(View.VISIBLE);
         }*/ //for single Image scan
-        if (Duke.uploadingImagesList.size() < 5 && !isLoadDocument) {
-            addImageView.setVisibility(View.VISIBLE);
-        }//for Multi Image scan
+//        if (Duke.uploadingImagesList.size() < 5 && !isLoadDocument) {
+//            addImageView.setVisibility(View.VISIBLE);
+//        }//for Multi Image scan
         System.out.println("LIBRARY~" + "setRecyclerView()");
         Log.e("LIBRARY~", "setRecyclerView()");
     }
@@ -499,8 +499,15 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 //    TODO: @OnClick(R.id.add_picture)
     void onClickAddPicture() {
         // Firebase: Send click upload button event
+//        Bundle params = new Bundle();
+//        params.putString("Page", "Upload_Document");
+//        if (uploadDocumentInterface != null) {
+//            uploadDocumentInterface.uploadDocumentListener(false);
+//        }
+
+        Duke.letUserAdjustCrop = true;
+        resetFileUploads();
         Bundle params = new Bundle();
-//        params.putString("Page", "Scan_Document");
         params.putString("Page", "Upload_Document");
         if (uploadDocumentInterface != null) {
             uploadDocumentInterface.uploadDocumentListener(false);
