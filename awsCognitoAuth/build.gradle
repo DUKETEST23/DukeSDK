@@ -58,7 +58,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.DUKETEST23'
             artifactId = 'awsCognitoAuth'
-            version = '1.5.4'
+            version = '1.5.5'
 
             afterEvaluate {
                 from components.release

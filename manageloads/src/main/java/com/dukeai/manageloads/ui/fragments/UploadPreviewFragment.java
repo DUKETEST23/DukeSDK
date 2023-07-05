@@ -174,7 +174,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         scrollView = v.findViewById(R.id.list_view);
         imagesRecyclerView = v.findViewById(R.id.images_view);
         uploadButton = v.findViewById(R.id.upload_button);
-        rescanBtn = v.findViewById(R.id.rescan_btn);
+//        rescanBtn = v.findViewById(R.id.rescan_btn);
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,12 +199,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
 
-        rescanBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickRescan();
-            }
-        });
+//        rescanBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onClickRescan();
+//            }
+//        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
