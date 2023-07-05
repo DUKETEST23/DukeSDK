@@ -175,7 +175,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         imagesRecyclerView = v.findViewById(R.id.images_view);
         uploadButton = v.findViewById(R.id.upload_button);
         rescanBtn = v.findViewById(R.id.rescan_btn);
-        rescanBtn.setOnClickListener(this::navigateToRescan);
+
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,12 +199,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
         });
 
-//        rescan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                navigateToRescan(view);
-//            }
-//        });
+        rescanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRescan();
+            }
+        });
 
         closeMark = v.findViewById(R.id.close_mark);
         camIcon = v.findViewById(R.id.cam_icon);
@@ -1052,7 +1052,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 //        rescan.setText(spannableString);
     }
 
-    public void navigateToRescan(View view) {
+    public void navigateToRescan() {
         Duke.letUserAdjustCrop = true;
         resetFileUploads();
         Bundle params = new Bundle();
