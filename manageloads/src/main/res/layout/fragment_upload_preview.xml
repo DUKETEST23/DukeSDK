@@ -101,10 +101,8 @@
             android:layout_height="wrap_content"
             style="@style/CameraUploadButton"
             android:text="@string/rescan"
-            android:textStyle="bold"
             android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap" />
+            android:layout_alignParentEnd="true" />
 
         <RelativeLayout
             android:id="@+id/add_picture"

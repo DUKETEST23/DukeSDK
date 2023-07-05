@@ -202,7 +202,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         rescanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateToRescan();
+                onClickRescan();
             }
         });
 
@@ -1052,7 +1052,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 //        rescan.setText(spannableString);
     }
 
-    public void navigateToRescan() {
+    void onClickRescan() {
         Duke.letUserAdjustCrop = true;
         resetFileUploads();
         Bundle params = new Bundle();
