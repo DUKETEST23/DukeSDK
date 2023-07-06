@@ -427,6 +427,13 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 //        }//for Multi Image scan
         System.out.println("LIBRARY~" + "setRecyclerView()");
         Log.e("LIBRARY~", "setRecyclerView()");
+
+        if (Duke.uploadingImagesList.size() < 5 && !isLoadDocument) {
+//            addImageView.setVisibility(View.VISIBLE);
+            camIcon.setImageResource(R.drawable.ic_take_picture);
+        } else {
+            camIcon.setImageResource(R.drawable.ic_reload);
+        }
     }
 
     private void setCustomHeader(View v) {
