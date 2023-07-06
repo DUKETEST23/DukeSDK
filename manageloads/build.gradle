@@ -108,7 +108,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.DUKETEST23'
             artifactId = 'manageLoads'
-            version = '1.5.7'
+            version = '1.5.8'
 
             afterEvaluate {
                 from components.release
