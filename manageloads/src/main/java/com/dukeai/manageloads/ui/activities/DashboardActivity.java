@@ -432,6 +432,7 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                             openPreviewImage(Duke.imageStoragePath, address, latitude, longitude);
                         }
 //                        customProgressLoader.hideDialog();
+                        customProgressLoader.dismiss();
                         Log.e("ERROR-1", address);
                     } catch (Exception e) {
                         openPreviewImage(Duke.imageStoragePath, "none", "", "");
