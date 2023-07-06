@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -306,11 +307,14 @@ public class Documents extends Fragment implements HeaderActions, UpdateTabStyle
                 params.putString("Page", "Document_" + currentFragment.toLowerCase());
             }
 
+            Log.e("#@#", "Add load document clicked!!!");
+
             if (uploadDocumentInterface != null) {
                 Utilities.resetFileData();
                 if(isLoadDocument) {
                     Duke.isNewLoadBeingCreated = false;
                     Duke.isDocumentAddingToLoad = true;
+                    Log.e("#@#", "inside isLoadDocumentCondition");
 //                    Duke.isNewLoadBeingCreated = false;
 //                    Duke.isDocumentAddingToLoad = true;
                 }
