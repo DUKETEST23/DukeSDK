@@ -190,11 +190,9 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
 
     private void setToolbarColor() {
 //        getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(Duke.getInstance(), R.color.colorTransparent));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = DashboardActivity.this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.yellow_BBAE27));
-        }
+        Window window = DashboardActivity.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.yellow_BBAE27));
     }
 
     private void loadFragments(String idToken, String refreshToken, String accessToken, String userName, String password) {
@@ -326,7 +324,8 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                     }
                     File scannedFile = new File(filePath);
                     Duke.imageStoragePath = scannedFile.getAbsolutePath();
-                    saveImageForPreview();
+                    requestNewLocationData();
+//                    saveImageForPreview();
                 } else {
                     // Handle the case when no cropped image results are available
                     System.out.println("No Scanned Documents found!");
