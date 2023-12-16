@@ -276,11 +276,12 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
             }
 
             previewImage.setImageBitmap(imageBitmap);
-            if (isPermissionGranted) {
-                setImageFilePath(path);
-            } else {
-                checkWritePermissions(path);
-            }
+//            if (isPermissionGranted) {
+//                setImageFilePath(path);
+//            } else {
+//                checkWritePermissions(path);
+//            }
+            setImageFilePath(path);
             System.out.println("LIBRARY~" + "getArgumentsData()");
             Log.e("LIBRARY~", "getArgumentsData()");
 
