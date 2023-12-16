@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/box_inset_layout_padding"
+    style="@style/Theme.App.Dialog.FullScreen"
+    tools:context=".ui.activities.PaymentActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorBlack">
+
+        <ImageButton
+            android:id="@+id/close_btn"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:src="@drawable/ic_close"
+            android:tint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorTransparent"/>
+
+        <ImageView
+            android:id="@+id/duke_logo"
+            android:layout_width="@dimen/dimen_160"
+            android:layout_height="@dimen/dimen_160"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_100"
+            android:src="@drawable/duke_logo"/>
+
+        <TextView
+            android:id="@+id/subscription_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/duke_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dimen_20"
+            android:textAlignment="center"
+            android:padding="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:text="Get unlimited access. Unlimited document upload."/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/subscription_option1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/subscription_option2"
+            style="@style/MaterialCard"
+            app:strokeColor="@color/yellow_BBAE27"
+            app:layout_constraintTop_toBottomOf="@id/subscription_details"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorTransparent"
+            android:layout_marginTop="@dimen/dimen_40">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:padding="@dimen/dimen_20"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/subscription_period1"
+                        android:text="Monthly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/yellow_BBAE27"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/font_20"/>
+                    <View
+                        android:id="@+id/separator1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/yellow_BBAE27"
+                        android:backgroundTint="@color/yellow_BBAE27"
+                        android:layout_marginVertical="@dimen/dimen_10"/>
+                    <TextView
+                        android:id="@+id/subscription_amount1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/yellow_BBAE27"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/font_20"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/subscription_option2"
+            app:layout_constraintStart_toEndOf="@id/subscription_option1"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/MaterialCard"
+            app:strokeColor="@color/colorGray"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintTop_toBottomOf="@id/subscription_details"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorTransparent"
+            android:layout_marginTop="@dimen/dimen_40">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:padding="@dimen/dimen_20"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/subscription_period2"
+                        android:text="Annual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/font_20"/>
+                    <View
+                        android:id="@+id/separator2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"
+                        android:backgroundTint="@color/colorGray"
+                        android:layout_marginVertical="@dimen/dimen_10"/>
+                    <TextView
+                        android:id="@+id/subscription_amount2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/font_20"/>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/subscription_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/subscription_option1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Include 14-day free trial. Cancel before September 12 and nothing will be billed."
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:textAlignment="center"
+            android:paddingHorizontal="@dimen/dimen_40"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/other_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:visibility="gone"
+            android:textSize="@dimen/font_24"
+            android:layout_marginTop="@dimen/dimen_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subscription_description"
+            android:textColor="@color/colorWhite" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/subscription_option3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/MaterialCard"
+            app:strokeColor="@color/colorGray"
+            app:layout_constraintTop_toBottomOf="@id/other_option"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorTransparent"
+            android:layout_marginTop="@dimen/dimen_40">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:padding="@dimen/dimen_20"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/subscription_period3"
+                        android:text="Invoice Processing Fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/font_20"/>
+                    <View
+                        android:id="@+id/separator3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGray"
+                        android:backgroundTint="@color/colorGray"
+                        android:layout_marginVertical="@dimen/dimen_10"/>
+                    <TextView
+                        android:id="@+id/subscription_amount3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGray"
+                        android:textSize="@dimen/font_20"/>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <Button
+            android:id="@+id/continue_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/privacy_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/dimen_20"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:padding="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginBottom="@dimen/dimen_20"
+            android:backgroundTint="@color/colorWhite"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:id="@+id/privacy_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/restore_purchase"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/privacy_policy_agreement"
+            android:textColor="@color/colorWhite"
+            android:paddingHorizontal="@dimen/dimen_20"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/restore_purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/restore_purchase"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_30"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

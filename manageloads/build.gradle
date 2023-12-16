@@ -6,11 +6,11 @@ plugins {
 apply plugin: 'maven-publish'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 23
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -101,6 +101,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
+    implementation 'com.revenuecat.purchases:purchases:4.0.1'
+    implementation "com.android.billingclient:billing:5.1.0"
+
 }
 
 publishing {
@@ -108,7 +111,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.DUKETEST23'
             artifactId = 'manageLoads'
-            version = '1.5.9'
+            version = '1.6.3'
 
             afterEvaluate {
                 from components.release

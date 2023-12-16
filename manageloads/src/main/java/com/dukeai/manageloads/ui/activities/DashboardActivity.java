@@ -246,9 +246,6 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                 if (Duke.isLocationPermissionProvided) {
 //                    ArrayList<String> addr = fetchLocation();
                     requestNewLocationData();
-//                    Log.d("current address-4", addr.get(0));
-//                    Log.d("current address-5", addr.get(1));
-//                    Log.d("current address-6", addr.get(3));
 
 //                    previewCapturedImage();
 //                    openPreviewImage(Duke.imageStoragePath, addr.get(0), addr.get(1), addr.get(2));

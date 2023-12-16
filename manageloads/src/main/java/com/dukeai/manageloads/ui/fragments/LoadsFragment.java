@@ -7,6 +7,7 @@ import static com.dukeai.manageloads.utils.AppConstants.Ifta.LOCATION_;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Bundle;
@@ -62,6 +63,7 @@ import com.dukeai.manageloads.model.SelectRecipientDataModel;
 import com.dukeai.manageloads.model.SingleLoadModel;
 import com.dukeai.manageloads.model.UserDataModel;
 import com.dukeai.manageloads.model.UserLoadsModel;
+import com.dukeai.manageloads.ui.activities.PaymentActivity;
 import com.dukeai.manageloads.utils.AppConstants;
 import com.dukeai.manageloads.utils.CustomProgressLoader;
 import com.dukeai.manageloads.utils.CustomToolbar;
@@ -83,6 +85,7 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.revenuecat.purchases.Purchases;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -896,46 +899,55 @@ public class LoadsFragment extends Fragment implements ActivityCompat.OnRequestP
 
 
     public void onClickTrasmit(View view) {
-        customProgressLoader.showDialog();
+//        customProgressLoader.showDialog();
+//
+//        //Transmit Load API
+//        UserConfig userConfig = UserConfig.getInstance();
+//        UserDataModel userDataModel;
+//        userDataModel = userConfig.getUserDataModel();
+//
+//        Log.d("selected loads", Duke.selectedLoadsForTransmission.toArray().toString());
+//
+//        if (Duke.selectedRecipients.size() > 0 && Duke.selectedLoadsForTransmission.size() > 0) {
+//            transmitToTheseUsers.addAll(Duke.selectedRecipients);
+//
+//            loadsViewModel.getTransmitLoadsModelLiveData(Duke.selectedLoadsForTransmission, transmitToTheseUsers,getContext()).observe(this, new Observer<LoadsTransmitModel>() {
+//                @Override
+//                public void onChanged(LoadsTransmitModel loadsTransmitModel) {
+//                    customProgressLoader.hideDialog();
+//                    transmitToTheseUsers.clear();
+//                    /*if(loadsTransmitModel.message != null && loadsTransmitModel.message.length()>0) {
+//                        Toast.makeText(getContext(), loadsTransmitModel.message, Toast.LENGTH_LONG).show();
+//                    }*/
+//                    try {
+//                        Duke.selectedRecipients.clear();
+//                        Duke.restRecipients.clear();
+//                        Toast.makeText(getContext(), loadsTransmitModel.message.toString(), Toast.LENGTH_LONG).show();
+//                        NavigationFlowManager.replaceFragment(new LoadsFragment(), null, getActivity(), R.id.dashboard_wrapper);
+//                        Log.d(TAG, "onChanged:852 " + loadsTransmitModel.message.toString());
+//                    } catch (Exception ex) {
+//
+//                    }
+//                }
+//            });
+//        } else {
+//            customProgressLoader.hideDialog();
+//            if (Duke.selectedRecipients.size() == 0) {
+//                Toast.makeText(getContext(), "Please select recipient(s)!", Toast.LENGTH_LONG).show();
+//            } else {
+//                Toast.makeText(getContext(), "Please select load(s) to transmit!", Toast.LENGTH_LONG).show();
+//            }
+//
+//        }
+        Purchases.setDebugLogsEnabled(true);
+        Purchases.configure(getContext(), "aZcnnlsPEikLbYMmVvkRuIkKQiPBUJBB");
+        loadPaywall();
+    }
 
-        //Transmit Load API
-        UserConfig userConfig = UserConfig.getInstance();
-        UserDataModel userDataModel;
-        userDataModel = userConfig.getUserDataModel();
-
-        Log.d("selected loads", Duke.selectedLoadsForTransmission.toArray().toString());
-
-        if (Duke.selectedRecipients.size() > 0 && Duke.selectedLoadsForTransmission.size() > 0) {
-            transmitToTheseUsers.addAll(Duke.selectedRecipients);
-
-            loadsViewModel.getTransmitLoadsModelLiveData(Duke.selectedLoadsForTransmission, transmitToTheseUsers,getContext()).observe(this, new Observer<LoadsTransmitModel>() {
-                @Override
-                public void onChanged(LoadsTransmitModel loadsTransmitModel) {
-                    customProgressLoader.hideDialog();
-                    transmitToTheseUsers.clear();
-                    /*if(loadsTransmitModel.message != null && loadsTransmitModel.message.length()>0) {
-                        Toast.makeText(getContext(), loadsTransmitModel.message, Toast.LENGTH_LONG).show();
-                    }*/
-                    try {
-                        Duke.selectedRecipients.clear();
-                        Duke.restRecipients.clear();
-                        Toast.makeText(getContext(), loadsTransmitModel.message.toString(), Toast.LENGTH_LONG).show();
-                        NavigationFlowManager.replaceFragment(new LoadsFragment(), null, getActivity(), R.id.dashboard_wrapper);
-                        Log.d(TAG, "onChanged:852 " + loadsTransmitModel.message.toString());
-                    } catch (Exception ex) {
-
-                    }
-                }
-            });
-        } else {
-            customProgressLoader.hideDialog();
-            if (Duke.selectedRecipients.size() == 0) {
-                Toast.makeText(getContext(), "Please select recipient(s)!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getContext(), "Please select load(s) to transmit!", Toast.LENGTH_LONG).show();
-            }
-
-        }
+    private void loadPaywall() {
+        Intent intent = new Intent(requireActivity(), PaymentActivity.class);
+        requireActivity().startActivity(intent);
+        requireActivity().finish();
     }
 
     private void openAddDocumentPanel() {
