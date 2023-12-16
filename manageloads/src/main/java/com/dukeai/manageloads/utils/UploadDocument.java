@@ -86,7 +86,7 @@ UploadDocument implements UploadImageActions, PopupActions {
 
     private void requestCameraPermission(final int type, final String from) {
         Dexter.withActivity(baseActivity)
-                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
