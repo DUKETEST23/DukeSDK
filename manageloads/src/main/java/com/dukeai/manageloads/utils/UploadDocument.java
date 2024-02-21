@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -85,37 +86,71 @@ UploadDocument implements UploadImageActions, PopupActions {
     }
 
     private void requestCameraPermission(final int type, final String from) {
-        Dexter.withActivity(baseActivity)
-                .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
-                .withListener(new MultiplePermissionsListener() {
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if (type == MEDIA_TYPE_IMAGE) {
-                            if (report.areAllPermissionsGranted()) {
-                                isPermissionAccepted = true;
-                                if (from.equals(AppConstants.UploadDocumentsConstants.FROM_GALLERY)) {
-                                    openGallery();
-                                } else {
-//                                    captureImage();
-                                    openDocumentScanner();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Dexter.withActivity(baseActivity)
+                    .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
+                    .withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (type == MEDIA_TYPE_IMAGE) {
+                                if (report.areAllPermissionsGranted()) {
+                                    isPermissionAccepted = true;
+                                    if (from.equals(AppConstants.UploadDocumentsConstants.FROM_GALLERY)) {
+                                        openGallery();
+                                    } else {
+    //                                    captureImage();
+                                        openDocumentScanner();
+                                    }
+                                } else if (report.isAnyPermissionPermanentlyDenied()) {
+                                    isPermissionAccepted = false;
+                                    showSettingsDialog();
                                 }
-                            } else if (report.isAnyPermissionPermanentlyDenied()) {
-                                isPermissionAccepted = false;
-                                showSettingsDialog();
                             }
                         }
-                    }
 
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-                        token.continuePermissionRequest();
-                    }
-                }).withErrorListener(new PermissionRequestErrorListener() {
-            @Override
-            public void onError(DexterError error) {
-            }
-        }).onSameThread()
-                .check();
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    }).withErrorListener(new PermissionRequestErrorListener() {
+                @Override
+                public void onError(DexterError error) {
+                }
+            }).onSameThread()
+                    .check();
+        } else {
+            Dexter.withActivity(baseActivity)
+                    .withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (type == MEDIA_TYPE_IMAGE) {
+                                if (report.areAllPermissionsGranted()) {
+                                    isPermissionAccepted = true;
+                                    if (from.equals(AppConstants.UploadDocumentsConstants.FROM_GALLERY)) {
+                                        openGallery();
+                                    } else {
+                                        //                                    captureImage();
+                                        openDocumentScanner();
+                                    }
+                                } else if (report.isAnyPermissionPermanentlyDenied()) {
+                                    isPermissionAccepted = false;
+                                    showSettingsDialog();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    }).withErrorListener(new PermissionRequestErrorListener() {
+                        @Override
+                        public void onError(DexterError error) {
+                        }
+                    }).onSameThread()
+                    .check();
+        }
     }
 
     private void showSettingsDialog() {
