@@ -61,6 +61,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 // Firebase: Setup
 
@@ -343,7 +344,7 @@ public class ProcessedDocumentsDetailsFragment extends Fragment implements Heade
                             prevButton.setVisibility(View.GONE);
                             nextButton.setVisibility(View.GONE);
                         }
-                        processedDocumentsFlipperAdapter = new ProcessedDocumentsFlipperAdapter(getContext(), R.layout.view_flipper_imageview, dataModel, updateDocumentNavigationIcons);
+                        processedDocumentsFlipperAdapter = new ProcessedDocumentsFlipperAdapter(requireContext(), R.layout.view_flipper_imageview, dataModel, updateDocumentNavigationIcons);
                         adapterViewFlipper.setAdapter(processedDocumentsFlipperAdapter);
                     } else {
                         customProgressLoader.hideDialog();

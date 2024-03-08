@@ -473,6 +473,11 @@ public class Utilities {
         try {
             InputStream in = activity.getContentResolver().openInputStream(uris.get(i));
 
+
+            byte[] bytes = getBytes(in);
+            resultBase64Encoded = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+
             RequestBody requestFile = RequestBody.create(MediaType.parse("application/pdf"), resultBase64Encoded);
             String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
             String fileName = getReportCurrentDateAndTime() + "_" + i + ".pdf";
@@ -488,6 +493,17 @@ public class Utilities {
 
         }
         return list;
+    }
+
+    public static byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
     public static MultipartBody.Part getFileCountArray(ArrayList<Integer> bitmapCount) {

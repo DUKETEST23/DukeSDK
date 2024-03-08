@@ -1,7 +1,9 @@
 package com.dukeai.manageloads.ui.fragments;
 
 import static com.dukeai.manageloads.Duke.DocsOfALoad;
+import static com.dukeai.manageloads.Duke.PDFDocURIs;
 import static com.dukeai.manageloads.ui.fragments.LoadsFragment.isLoadDocument;
+import static com.dukeai.manageloads.utils.Utilities.getMultipartBody;
 
 import android.Manifest;
 import android.content.ContentResolver;
@@ -24,6 +26,7 @@ import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,16 +93,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 
 public class UploadPreviewFragment extends Fragment implements UploadImagePreviewClickListener, PopupActions, HeaderActions, UploadSelectionListener {
@@ -265,8 +274,6 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
                     isDocumentAPDF = true;
                     page.close();
                     pdfRenderer.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -570,9 +577,21 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
 
         MultipartBody.Part[] list = new MultipartBody.Part[Duke.uploadingImageStoragePaths.size()];
         MultipartBody.Part[] pdfList;
-        list = Utilities.getMultipartBody(Duke.uploadingImageStoragePaths, false, screenWidth, screenHeight);
-        Log.d("as", Duke.PDFDocURIs.toString());
+        list = getMultipartBody(Duke.uploadingImageStoragePaths, false, screenWidth, screenHeight);
+        Log.d("as", PDFDocURIs.toString());
+
+//        if(Duke.uploadingPDFStoragePaths.size() > 0 && Duke.PDFDocURIs.size() == 0) {
+//            Duke.PDFDocURIs.add(Uri.parse(Duke.uploadingImageStoragePaths.get(0)));
+//        }
+
+        ArrayList<String> pdfRq = new ArrayList<String>();
+        pdfRq.addAll(Collections.singleton(PDFDocURIs.toString()));
+
+//        pdfList = getPDFMultipartBody(PDFDocURIs.get(0));
+
         pdfList = Utilities.getPDFMultipartBody(getActivity(), null, Duke.PDFDocURIs, screenWidth, screenHeight);
+//        pdfList = Utilities.getPDFMultipartBody(getActivity(), null, Duke.uploadingPDFStoragePaths, screenWidth, screenHeight);
+
 
         MultipartBody.Part fileCount = Utilities.getFileCountArray(bitmapsCount);
         MultipartBody.Part address = MultipartBody.Part.createFormData("address", currentLocation);
@@ -791,8 +810,7 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
                                     @Override
                                     public void onChanged(UploadFileResponseModel uploadFileResponseModel) {
                                         customProgressLoader.hideDialog();
-//                                        Log.d("sdf", uploadFileResponseModel.getStatus());
-//                                        Log.d("sdf", uploadFileResponseModel.getStatus());
+
                                         Bundle bundle = new Bundle();
                                         if(uploadFileResponseModel.getMessage() != null) {
                                             if(uploadFileResponseModel.getStatus().toLowerCase().equals("success")) {
@@ -800,11 +818,6 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
                                             } else {
                                                 bundle.putString("upload_status", "Document upload failed!");
                                             }
-//                                            if(uploadFileResponseModel.getMessage().contains("Upload queued")) {
-//                                                bundle.putString("upload_status", "Document upload successful!");
-//                                            } else {
-//                                                bundle.putString("upload_status", "Document upload failed!");
-//                                            }
                                         }
                                         NavigationFlowManager.openFragments(Duke.loadsFragment, bundle, getActivity(), R.id.dashboard_wrapper);
                                     }
@@ -1075,5 +1088,42 @@ public class UploadPreviewFragment extends Fragment implements UploadImagePrevie
         if (uploadDocumentInterface != null) {
             uploadDocumentInterface.uploadDocumentListener(false);
         }
+    }
+
+    private MultipartBody.Part[] getPDFMultipartBody(Uri uri) {
+
+        String resultBase64Encoded = "";
+
+        MultipartBody.Part[] list = new MultipartBody.Part[1];
+
+        try {
+
+            InputStream in = (getActivity()).getContentResolver().openInputStream(uri);
+            byte[] bytes = getBytes(in);
+            resultBase64Encoded = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+            RequestBody requestFile = RequestBody.create(MediaType.parse("application/pdf"), resultBase64Encoded);
+            String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+            String fileName = timeStamp + ".pdf";
+
+            MultipartBody.Part body = MultipartBody.Part.createFormData(fileName, fileName, requestFile);
+            list[0] = body;
+
+        } catch (Exception e) {
+            Log.e("Exception", e.getMessage());
+        }
+
+        return list;
+    }
+
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 }

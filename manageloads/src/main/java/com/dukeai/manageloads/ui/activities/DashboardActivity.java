@@ -279,15 +279,23 @@ public class DashboardActivity extends AppCompatActivity implements UploadDocume
                     } else {
                         uri2 = data.getData();
                         ContentResolver cR = context.getContentResolver();
-//                        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//                        String type = mime.getExtensionFromMimeType(cR.getType(uri2));
+                        MimeTypeMap mime = MimeTypeMap.getSingleton();
+                        String type = mime.getExtensionFromMimeType(cR.getType(uri2));
+
                         if (data.getData() != null) {
                             uri = data.getData();
                         } else {
                             uri = data.getClipData().getItemAt(0).getUri();
                         }
+
                         realPath = UriUtils.getMediaFilePathForN(uri, this);
-                        Duke.imageStoragePath = realPath;
+
+                        assert type != null;
+                        if(type.equalsIgnoreCase("pdf")) {
+                            Duke.PDFDocURIs.add(uri);
+                        } else {
+                            Duke.imageStoragePath = realPath;
+                        }
                         requestNewLocationData();
                     }
                 }
