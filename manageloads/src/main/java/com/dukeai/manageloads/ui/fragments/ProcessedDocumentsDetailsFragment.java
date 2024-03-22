@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterViewFlipper;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -62,6 +63,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 // Firebase: Setup
 
@@ -190,6 +194,20 @@ public class ProcessedDocumentsDetailsFragment extends Fragment implements Heade
             @Override
             public void onClick(View view) {
                 onClickSubmitBtn();
+            }
+        });
+
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPreviousImage();
+            }
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNextImage();
             }
         });
 
@@ -550,6 +568,7 @@ public class ProcessedDocumentsDetailsFragment extends Fragment implements Heade
 
 
     //TODO Next Button
+
     public void showNextImage() {
         // Firebase: Send click right button event
         Bundle params = new Bundle();
